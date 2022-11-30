@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useContext, useMemo } from 'react';
 import './App.css';
+import { createTheme, ThemeProvider } from '@mui/material';
+import SwitchThemeButton from './components/SwitchThemeButton';
+import getThemeModePalette from './utils/theme';
+import { ColorModeContext, ColorModeThemeProvider } from './hooks/useThemeMode';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+const App = () => {
+
+    const [mode, setMode] = useContext(ColorModeContext);
+
+    const theme = useMemo(() => createTheme(getThemeModePalette(mode)), [mode]);
+
+  
+    return (
+      <ColorModeThemeProvider >
+        <ThemeProvider theme={theme}>
+           <SwitchThemeButton />
+        </ThemeProvider>
+      </ColorModeThemeProvider>
+    );
+  };
 
 export default App;

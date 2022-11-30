@@ -1,0 +1,31 @@
+import { Box, Button, IconButton, useTheme } from "@mui/material";
+import { useContext } from "react";
+import { ColorModeContext, Theme } from "../hooks/useThemeMode";
+
+const SwitchThemeButton = () => {
+    const theme = useTheme();
+    const [mode, setMode] = useContext(ColorModeContext);
+
+    const switchTheme = (mode: Theme) => setMode(mode === 'light' ? 'dark' : 'light');
+
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
+          bgcolor: 'background.default',
+          color: 'text.primary',
+          borderRadius: 1,
+          p: 3,
+        }}
+      >
+        {theme.palette.mode} mode
+        <IconButton sx={{ ml: 1 }} onClick={() => switchTheme(mode)} color="inherit">
+        </IconButton>
+      </Box>
+    );
+  };
+
+export default SwitchThemeButton;
