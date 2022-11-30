@@ -15,6 +15,7 @@ const WrappedApp = () => {
     return (
     <ThemeProvider theme={theme}>
         <SwitchThemeButton />
+        <span>xd</span>
      </ThemeProvider>
     )
 };

@@ -1,12 +1,12 @@
 import { Box, IconButton, useTheme } from "@mui/material";
 import { useContext } from "react";
-import { ColorModeContext, Theme } from "../hooks/useThemeMode";
+import { ColorModeContext, ThemeType } from "../hooks/useThemeMode";
 
 const SwitchThemeButton = () => {
     const theme = useTheme();
     const [mode, setMode] = useContext(ColorModeContext);
 
-    const switchTheme = (mode: Theme) => {
+    const switchTheme = (mode: ThemeType) => {
         setMode(mode === 'light' ? 'dark' : 'light');
         console.log(mode, 'cd');
     }
