@@ -27,7 +27,7 @@ const SwitchThemeButton = () => {
       >
         {theme.palette.mode} mode
         <IconButton sx={{ ml: 1 }} onClick={() => switchTheme(mode)} color="inherit">
-            shdfahdv
+            click me
         </IconButton>
       </Box>
     );
