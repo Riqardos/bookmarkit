@@ -1,35 +1,16 @@
-import { Box, IconButton, useTheme } from "@mui/material";
+import { DarkMode, WbSunny } from "@mui/icons-material";
+import { IconButton, useTheme } from "@mui/material";
 import { useContext } from "react";
-import { ColorModeContext, ThemeType } from "../hooks/useThemeMode";
+import { ColorModeContext } from "../utils/ColorModeThemeProvider";
 
 const SwitchThemeButton = () => {
     const theme = useTheme();
-    const [mode, setMode] = useContext(ColorModeContext);
+    const colorMode = useContext(ColorModeContext);
 
-    const switchTheme = (mode: ThemeType) => {
-        setMode(mode === 'light' ? 'dark' : 'light');
-        console.log(mode, 'cd');
-    }
-
-    console.log(mode);
     return (
-      <Box
-        sx={{
-          display: 'flex',
-          width: '100%',
-          alignItems: 'center',
-          justifyContent: 'center',
-          bgcolor: 'background.default',
-          color: 'text.primary',
-          borderRadius: 1,
-          p: 3,
-        }}
-      >
-        {theme.palette.mode} mode
-        <IconButton sx={{ ml: 1 }} onClick={() => switchTheme(mode)} color="inherit">
-            click me
+        <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+            {theme.palette.mode === 'light' ? <DarkMode fontSize='large'/> : <WbSunny fontSize='large' />}
         </IconButton>
-      </Box>
     );
   };
 
