@@ -1,0 +1,19 @@
+name: Lint&Build
+on:
+  pull_request:
+jobs:
+  submit:
+    name: Lint&Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install
+        run: yarn
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Build
+        run: yarn build

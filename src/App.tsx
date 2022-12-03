@@ -1,26 +1,46 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { Button, Container } from '@mui/material';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { routes } from './routes';
+import NotFound from './pages/NotFound';
+import Login from './pages/Login';
+import Home from './pages/Home';
+
+const App = () => (
+	<BrowserRouter>
+		<div className="App">
+			<Button component={Link} to={routes.home}>
+				Home
+			</Button>
+			<Button component={Link} to={routes.login}>
+				Login
+			</Button>
+			<Button component={Link} to={routes.notFound}>
+				Not found
+			</Button>
+		</div>
+		<Container
+			maxWidth="sm"
+			component="main"
+			sx={{
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'center',
+				alignItems: 'center',
+				height: '100vh',
+				pt: 8,
+				gap: 2
+			}}
+		>
+			<Routes>
+				<Route path={routes.home} element={<Home />} />
+				<Route path={routes.login} element={<Login />} />
+				<Route path={routes.notFound} element={<NotFound />} />
+			</Routes>
+		</Container>
+	</BrowserRouter>
+);
 
 export default App;
