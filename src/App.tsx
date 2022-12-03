@@ -1,31 +1,46 @@
-import { CssBaseline, Typography } from '@mui/material';
+import React from 'react';
 import './App.css';
-import SwitchThemeButton from './components/SwitchThemeButton';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { Button, Container } from '@mui/material';
 
-import {  ColorModeThemeProvider } from './utils/ColorModeThemeProvider';
+import { routes } from './routes';
+import NotFound from './pages/NotFound';
+import Login from './pages/Login';
+import Home from './pages/Home';
 
-
-const App = () => {
-    return (
-      <ColorModeThemeProvider >
-        <CssBaseline />
-        <Typography color='yellow'>Hello.</Typography>
-        <Typography color='orange'>Hello.</Typography>
-        <Typography color='pink'>Hello.</Typography>
-        <Typography color='azure'>Hello.</Typography>
-        <Typography color='darkBlue'>Hello.</Typography>
-        <Typography color='purple'>Hello.</Typography>
-        <Typography color='green'>Hello.</Typography>
-        <Typography color='lightGreen'>Hello.</Typography>
-        <Typography color='red'>Hello.</Typography>
-        <Typography color='lightGrey'>Hello.</Typography>
-        <Typography color='primary.contrastText'>Hello.</Typography>
-        <Typography color='primary.light'>Hello.</Typography>
-        <Typography color='primary.main'>Hello.</Typography>
-        <Typography color='primary.dark'>Hello.</Typography>
-        <SwitchThemeButton />
-      </ColorModeThemeProvider>
-    );
-  };
+const App = () => (
+	<BrowserRouter>
+		<div className="App">
+			<Button component={Link} to={routes.home}>
+				Home
+			</Button>
+			<Button component={Link} to={routes.login}>
+				Login
+			</Button>
+			<Button component={Link} to={routes.notFound}>
+				Not found
+			</Button>
+		</div>
+		<Container
+			maxWidth="sm"
+			component="main"
+			sx={{
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'center',
+				alignItems: 'center',
+				height: '100vh',
+				pt: 8,
+				gap: 2
+			}}
+		>
+			<Routes>
+				<Route path={routes.home} element={<Home />} />
+				<Route path={routes.login} element={<Login />} />
+				<Route path={routes.notFound} element={<NotFound />} />
+			</Routes>
+		</Container>
+	</BrowserRouter>
+);
 
 export default App;
