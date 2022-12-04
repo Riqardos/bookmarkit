@@ -7,8 +7,10 @@ import {
 	getBackendOptions,
 	getDescendants
 } from '@minoru/react-dnd-treeview';
-import { Button } from '@mui/material';
+import { Box, Button, FormControlLabel, Switch } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+
+import { useSwitch } from '../hooks/useSwitch';
 
 import { CustomNode } from './CustomNode';
 import styles from './App.module.css';
@@ -97,6 +99,8 @@ const TreeViewDnD = () => {
 	const [nodeDialog, setNodeDialog] = useState<
 		NodeModel<CustomData> | undefined
 	>(undefined);
+	const [editEnabled, switchProps] = useSwitch('editSwitch');
+	const [hoverUrl, setHoverUrl] = useState<string | undefined>(undefined);
 
 	const handleOpenDialog = () => {
 		setDialogOpen(true);
@@ -147,6 +151,7 @@ const TreeViewDnD = () => {
 
 		setTreeData(newTree);
 		setDialogOpen(false);
+		setNodeDialog(undefined);
 	};
 
 	const handleEdit = (id: NodeModel['id']) => {
@@ -155,12 +160,17 @@ const TreeViewDnD = () => {
 		setNodeDialog(node);
 	};
 
+	const handleHoverUrl = (url: string | undefined) => {
+		setHoverUrl(url);
+	};
+
 	return (
 		<DndProvider backend={MultiBackend} options={getBackendOptions()}>
-			<div>
+			<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
 				<Button onClick={handleOpenDialog} startIcon={<AddIcon />}>
-					Add Node
+					Add Bookmark
 				</Button>
+				<FormControlLabel control={<Switch {...switchProps} />} label="Edit" />
 				{dialogOpen && (
 					<AddDialog
 						nodeDialog={nodeDialog}
@@ -170,7 +180,7 @@ const TreeViewDnD = () => {
 						onEdit={editNode}
 					/>
 				)}
-			</div>
+			</Box>
 			<Tree
 				tree={treeData}
 				rootId={0}
@@ -179,12 +189,15 @@ const TreeViewDnD = () => {
 						node={node}
 						depth={depth}
 						isOpen={isOpen}
+						editEnabled={editEnabled}
 						onToggle={onToggle}
 						onDelete={handleDelete}
 						onEdit={handleEdit}
+						onHoverUrl={handleHoverUrl}
 					/>
 				)}
 				onDrop={handleDrop}
+				canDrag={() => editEnabled}
 				classes={{
 					root: styles.treeRoot,
 					draggingSource: styles.draggingSource,

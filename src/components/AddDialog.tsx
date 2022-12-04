@@ -60,12 +60,8 @@ export const AddDialog: React.FC<Props> = props => {
 
 	return (
 		<Dialog open onClose={props.onClose} maxWidth="xl">
-			<DialogTitle>Add New Node</DialogTitle>
-			<DialogContent
-				sx={{
-					width: '500px'
-				}}
-			>
+			<DialogTitle>Add New Bookmark</DialogTitle>
+			<DialogContent>
 				<Box
 					sx={{
 						marginY: 2,
@@ -73,10 +69,14 @@ export const AddDialog: React.FC<Props> = props => {
 						gap: '16px'
 					}}
 				>
-					<TextField label="Text" onChange={handleChangeText} value={text} />
+					<TextField
+						label="Bookmark name"
+						onChange={handleChangeText}
+						value={text}
+					/>
 					<FormControl sx={{ width: '100%' }}>
-						<InputLabel>Parent</InputLabel>
-						<Select label="Parent" onChange={handleChangeParent} value={parent}>
+						<InputLabel>Folder</InputLabel>
+						<Select label="Folder" onChange={handleChangeParent} value={parent}>
 							<MenuItem value={0}>(root)</MenuItem>
 							{props.tree
 								.filter(node => node.droppable === true)
@@ -95,7 +95,7 @@ export const AddDialog: React.FC<Props> = props => {
 								color="primary"
 							/>
 						}
-						label="Droppable"
+						label="Is folder?"
 					/>
 					{!droppable && (
 						<TextField label="Url" onChange={handleChangeUrl} value={url} />
