@@ -95,6 +95,13 @@ const getThemeModePalette = (mode: PaletteMode) => ({
 					display: 'flex',
 					flexDirection: 'column',
 					minHeight: '100vh'
+				},
+				'html, body, #root': {
+					height: '100%'
+				},
+				'ul': {
+					listStyle: 'none',
+					paddingInlineStart: 0
 				}
 			}
 		}

@@ -1,8 +1,5 @@
 import React from 'react';
 import FolderIcon from '@mui/icons-material/Folder';
-import ImageIcon from '@mui/icons-material/Image';
-import ListAltIcon from '@mui/icons-material/ListAlt';
-import DescriptionIcon from '@mui/icons-material/Description';
 import { IconButton } from '@mui/material';
 
 type Props = {
@@ -11,7 +8,7 @@ type Props = {
 	url?: string;
 };
 
-export const TypeIcon: React.FC<Props> = ({ droppable, fileType, url }) => {
+export const TypeIcon: React.FC<Props> = ({ droppable, url }) => {
 	if (droppable) {
 		return <FolderIcon />;
 	}
