@@ -9,11 +9,11 @@ import {
 } from '@minoru/react-dnd-treeview';
 import { Box, Button, FormControlLabel, Switch } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+import { makeStyles } from '@mui/styles';
 
 import { useSwitch } from '../hooks/useSwitch';
 
 import { CustomNode } from './CustomNode';
-import styles from './App.module.css';
 import { AddDialog } from './AddDialog';
 import { CustomData } from './types';
 
@@ -92,6 +92,18 @@ const getLastId = (treeData: NodeModel[]) => {
 	return 0;
 };
 
+const useStyles = makeStyles({
+	root: {
+		eight: '100%'
+	},
+	draggingSource: {
+		opacity: 0.3
+	},
+	dropTarget: {
+		backgroundColor: '#e8f0fe'
+	}
+});
+
 const TreeViewDnD = () => {
 	const [treeData, setTreeData] = useState<NodeModel<CustomData>[]>(sampleData);
 	const handleDrop = (newTree: NodeModel<CustomData>[]) => setTreeData(newTree);
@@ -100,6 +112,7 @@ const TreeViewDnD = () => {
 		NodeModel<CustomData> | undefined
 	>(undefined);
 	const [editEnabled, switchProps] = useSwitch('editSwitch');
+	const styles = useStyles();
 
 	const handleOpenDialog = () => {
 		setDialogOpen(true);
@@ -193,7 +206,7 @@ const TreeViewDnD = () => {
 				onDrop={handleDrop}
 				canDrag={() => editEnabled}
 				classes={{
-					root: styles.treeRoot,
+					root: styles.root,
 					draggingSource: styles.draggingSource,
 					dropTarget: styles.dropTarget
 				}}
