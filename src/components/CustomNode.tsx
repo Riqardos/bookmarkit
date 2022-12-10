@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import Typography from '@mui/material/Typography';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { NodeModel } from '@minoru/react-dnd-treeview';
 import { Box, IconButton, Link } from '@mui/material';
 import { Delete } from '@mui/icons-material';
 import EditIcon from '@mui/icons-material/Edit';
-
-import { useSwitch } from '../hooks/useSwitch';
 
 import { TypeIcon } from './TypeIcon';
 import { CustomData } from './types';
@@ -19,7 +16,6 @@ type Props = {
 	onToggle: (id: NodeModel['id']) => void;
 	onDelete: (id: NodeModel['id']) => void;
 	onEdit: (id: NodeModel['id']) => void;
-	onHoverUrl: (url: string | undefined) => void;
 };
 
 export const CustomNode: React.FC<Props> = props => {
@@ -41,7 +37,6 @@ export const CustomNode: React.FC<Props> = props => {
 				display: 'flex',
 				height: '32px'
 			}}
-			onMouseEnter={() => data?.url && props.onHoverUrl(data?.url)}
 		>
 			<Box
 				sx={{

@@ -100,7 +100,6 @@ const TreeViewDnD = () => {
 		NodeModel<CustomData> | undefined
 	>(undefined);
 	const [editEnabled, switchProps] = useSwitch('editSwitch');
-	const [hoverUrl, setHoverUrl] = useState<string | undefined>(undefined);
 
 	const handleOpenDialog = () => {
 		setDialogOpen(true);
@@ -160,10 +159,6 @@ const TreeViewDnD = () => {
 		setNodeDialog(node);
 	};
 
-	const handleHoverUrl = (url: string | undefined) => {
-		setHoverUrl(url);
-	};
-
 	return (
 		<DndProvider backend={MultiBackend} options={getBackendOptions()}>
 			<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -193,7 +188,6 @@ const TreeViewDnD = () => {
 						onToggle={onToggle}
 						onDelete={handleDelete}
 						onEdit={handleEdit}
-						onHoverUrl={handleHoverUrl}
 					/>
 				)}
 				onDrop={handleDrop}
