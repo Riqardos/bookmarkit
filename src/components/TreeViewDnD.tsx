@@ -108,6 +108,7 @@ const TreeViewDnD = () => {
 	const [treeData, setTreeData] = useState<NodeModel<CustomData>[]>(sampleData);
 	const handleDrop = (newTree: NodeModel<CustomData>[]) => setTreeData(newTree);
 	const [dialogOpen, setDialogOpen] = useState<boolean>(false);
+
 	const [nodeDialog, setNodeDialog] = useState<
 		NodeModel<CustomData> | undefined
 	>(undefined);
@@ -181,6 +182,7 @@ const TreeViewDnD = () => {
 				<FormControlLabel control={<Switch {...switchProps} />} label="Edit" />
 				{dialogOpen && (
 					<AddDialog
+						open={dialogOpen}
 						nodeDialog={nodeDialog}
 						tree={treeData}
 						onClose={handleCloseDialog}

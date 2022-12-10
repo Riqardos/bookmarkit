@@ -20,6 +20,7 @@ import { NodeModel } from '@minoru/react-dnd-treeview';
 import { CustomData } from './types';
 
 type Props = {
+	open: boolean;
 	tree: NodeModel[];
 	nodeDialog: NodeModel<CustomData> | undefined;
 	onClose: () => void;
@@ -59,7 +60,7 @@ export const AddDialog: React.FC<Props> = props => {
 	};
 
 	return (
-		<Dialog open onClose={props.onClose} maxWidth="xl">
+		<Dialog open={props.open} onClose={props.onClose} maxWidth="xl">
 			<DialogTitle>Add New Bookmark</DialogTitle>
 			<DialogContent>
 				<Box
