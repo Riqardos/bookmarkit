@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import SwitchThemeButton from './components/SwitchThemeButton';
 import { ColorModeThemeProvider } from './utils/ColorModeThemeProvider';
+import logo from './logo.svg';
 
 const App = () => (
 	<ColorModeThemeProvider>
@@ -27,7 +28,6 @@ const App = () => (
 				<SwitchThemeButton />
 			</div>
 			<Container
-				maxWidth="sm"
 				component="main"
 				sx={{
 					display: 'flex',
@@ -35,6 +35,7 @@ const App = () => (
 					justifyContent: 'center',
 					alignItems: 'center',
 					height: '100vh',
+					width: '100vw',
 					pt: 8,
 					gap: 2
 				}}

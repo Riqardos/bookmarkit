@@ -1,38 +1,193 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
+:root {
+	--yellow: #f4fa4b;
+	--orange: #e27900;
+	--pink: #df2ea7;
+	--azure: #6ab7ff;
+	--darkBlue: #2a2fc7;
+	--purple: #c184db;
+	--green: #68a357;
+	--lightGreen: #b2cca4;
+	--red: #c22222;
+	--lightGrey: #4c4c4c;
+	--beige: #6a84b3;
+}
+
 .App {
-  text-align: center;
+	text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+	height: 40vmin;
+	pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 
 .App-link {
-  color: #61dafb;
+	color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.circle {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	position: relative;
+	animation: circle 6s linear infinite;
+	/*
+	animation-name: topMovement;
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+    */
+}
+
+/*#region Colors*/
+.purple {
+	background-color: var(--purple);
+}
+
+.azure {
+	background-color: var(--azure);
+}
+
+.yellow {
+	background-color: var(--yellow);
+}
+/*#endregion */
+
+/*#region Movements*/
+@keyframes circle {
+	0% {
+		transform: rotate(0deg) translate(-165px) rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg) translate(-165px) rotate(-360deg);
+	}
+}
+
+/*#endregion */
+
+.context {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	perspective: 2000px;
+	transform-style: preserve-3d;
+}
+
+.square {
+	border: 1px solid transparent;
+	height: 500px;
+	width: 30px;
+	background: black;
+	position: absolute;
+	animation: square 100s linear infinite alternate;
+}
+
+.book {
+	width: 18rem;
+	height: 24rem;
+	border-radius: 4%;
+	background: rgb(181, 219, 236);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	animation: bookMovement 1.5s linear;
+}
+
+.book__title {
+	font-size: 3rem;
+	font-family: 'Comfortaa';
+	font-style: bold;
+	color: #113074;
+	font-weight: 900;
+}
+
+.bookmark {
+	background: #f19408;
+	color: #113074;
+	height: 4rem;
+
+	font-size: 1.5rem;
+	width: 50%;
+	font-family: 'Comfortaa';
+	font-style: bold;
+	padding: 1rem;
+	border-radius: 2rem 2rem 0 0;
+	transform: translate(75%, 10%);
+	position: relative;
+
+	animation: unvisible 1.5s linear, bookmark-appears 2s 1.5s linear;
+}
+
+.bookmark__it {
+	animation: unvisible 4s linear;
+	color: white;
+}
+
+@keyframes unvisible {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes bookmark-appears {
+	from {
+		bottom: -4rem;
+	}
+	to {
+		bottom: 0px;
+	}
+}
+
+@keyframes bookMovement {
+	0% {
+		transform: rotate(0deg);
+		left: -5000px;
+	}
+	45% {
+		transform: rotate(0deg);
+		left: 25%;
+	}
+	50% {
+		transform: rotate(0deg);
+		left: 25%;
+		-webkit-transform: skew(-10deg, -0deg);
+	}
+	55% {
+		transform: rotate(0deg);
+		left: 25%;
+	}
+	100% {
+		left: 0%;
+	}
 }
