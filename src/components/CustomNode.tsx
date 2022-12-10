@@ -36,7 +36,7 @@ export const CustomNode: React.FC<Props> = props => {
 		<>
 			{alertDialogOpen && (
 				<AlertDialog
-					title="Remove bookmark?"
+					title="Do you really want to remove this item?"
 					onYes={() => props.onDelete(id)}
 					onNo={() => setAlertDialogOpen(false)}
 				/>
