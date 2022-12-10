@@ -9,7 +9,6 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import SwitchThemeButton from './components/SwitchThemeButton';
 import { ColorModeThemeProvider } from './utils/ColorModeThemeProvider';
-import logo from './logo.svg';
 
 const App = () => (
 	<ColorModeThemeProvider>
@@ -34,9 +33,8 @@ const App = () => (
 					flexDirection: 'column',
 					justifyContent: 'center',
 					alignItems: 'center',
-					height: '100vh',
+					height: '100%',
 					width: '100vw',
-					pt: 8,
 					gap: 2
 				}}
 			>
