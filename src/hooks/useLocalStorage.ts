@@ -1,3 +1,5 @@
+// copied from study materials
+
 import { useEffect, useState } from 'react';
 
 export type StorageKey = 'themeMode';
