@@ -3,9 +3,12 @@ import React, {
 	createContext,
 	FC,
 	PropsWithChildren,
+	useEffect,
 	useMemo,
 	useState
 } from 'react';
+
+import useLocalStorage from '../hooks/useLocalStorage';
 
 import getThemeModePalette from './theme';
 
@@ -13,7 +16,17 @@ import getThemeModePalette from './theme';
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 export const ColorModeThemeProvider: FC<PropsWithChildren> = ({ children }) => {
-	const [mode, setMode] = useState<'light' | 'dark'>('light');
+	const [localStorageMode, setLocalStorageMode] = useLocalStorage('themeMode');
+	const newMode =
+		localStorageMode === 'light' || localStorageMode === 'dark'
+			? localStorageMode
+			: 'light';
+	const [mode, setMode] = useState<'light' | 'dark'>(newMode);
+
+	useEffect(() => {
+		setLocalStorageMode(mode);
+	}, [mode]);
+
 	const colorMode = useMemo(
 		() => ({
 			toggleColorMode: () => {
