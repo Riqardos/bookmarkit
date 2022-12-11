@@ -50,7 +50,7 @@ const getThemeModePalette = (mode: PaletteMode) => ({
 					},
 					// custom colors, use preferably
 					yellow: '#f5fc28',
-					orange: '#e27900',
+					orange: '#f19408',
 					pink: '#df2ea7',
 					azure: '#6ab7FF',
 					darkBlue: '#2a2fc7',
@@ -75,11 +75,11 @@ const getThemeModePalette = (mode: PaletteMode) => ({
 					},
 					// applied to icons
 					text: {
-						primary: '#f4fa4b'
+						primary: '#f19408'
 					},
 					// custom colors, use preferably
 					yellow: '#f4fa4b',
-					orange: '#e27900',
+					orange: '#f19408',
 					pink: '#df2ea7',
 					azure: '#6ab7ff',
 					lightBlue: '#b5dbec',
