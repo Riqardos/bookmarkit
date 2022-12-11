@@ -9,6 +9,7 @@ declare module '@mui/material/styles' {
 		pink?: string;
 		azure?: string;
 		darkBlue?: string;
+		lightBlue?: string;
 		purple?: string;
 		green?: string;
 		lightGreen?: string;
@@ -22,6 +23,7 @@ declare module '@mui/material/styles' {
 		pink?: string;
 		azure?: string;
 		darkBlue?: string;
+		lightBlue?: string;
 		purple?: string;
 		green?: string;
 		lightGreen?: string;
@@ -44,14 +46,15 @@ const getThemeModePalette = (mode: PaletteMode) => ({
 					},
 					background: {
 						default: grey[100],
-						paper: grey[200]
+						paper: grey[100]
 					},
 					// custom colors, use preferably
 					yellow: '#f5fc28',
-					orange: '#e27900',
+					orange: '#f19408',
 					pink: '#df2ea7',
 					azure: '#6ab7FF',
 					darkBlue: '#2a2fc7',
+					lightBlue: '#b5dbec',
 					purple: '#a41bdf',
 					green: '#68a357',
 					lightGreen: '#b2cca4',
@@ -68,17 +71,18 @@ const getThemeModePalette = (mode: PaletteMode) => ({
 					},
 					background: {
 						default: grey[900],
-						paper: grey[800]
+						paper: grey[900]
 					},
 					// applied to icons
 					text: {
-						primary: '#f4fa4b'
+						primary: '#f19408'
 					},
 					// custom colors, use preferably
 					yellow: '#f4fa4b',
-					orange: '#e27900',
+					orange: '#f19408',
 					pink: '#df2ea7',
-					azure: '#6ab7FF',
+					azure: '#6ab7ff',
+					lightBlue: '#b5dbec',
 					darkBlue: '#2a2fc7',
 					purple: '#c184db',
 					green: '#68a357',
@@ -86,6 +90,9 @@ const getThemeModePalette = (mode: PaletteMode) => ({
 					red: '#c22222',
 					lightGrey: '#4c4c4c'
 			  })
+	},
+	typography: {
+		fontFamily: ['Comfortaa', 'Roboto'].join(',')
 	},
 	components: {
 		MuiCssBaseline: {
