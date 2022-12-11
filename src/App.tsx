@@ -32,8 +32,8 @@ const App = () => (
 				sx={{
 					display: 'flex',
 					flexDirection: 'column',
-					justifyContent: 'center',
-					alignItems: 'center',
+					justifyContent: 'left',
+					alignItems: 'left',
 					height: '100vh',
 					pt: 8,
 					gap: 2
