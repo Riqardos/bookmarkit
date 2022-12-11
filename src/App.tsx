@@ -1,7 +1,6 @@
 import React from 'react';
-import './App.css';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import { Button, Container, CssBaseline } from '@mui/material';
+import { Box, Button, Container, CssBaseline } from '@mui/material';
 
 import { routes } from './routes';
 import NotFound from './pages/NotFound';
@@ -14,7 +13,11 @@ const App = () => (
 	<ColorModeThemeProvider>
 		<CssBaseline />
 		<BrowserRouter>
-			<div className="App">
+			<Box
+				sx={{
+					textAlign: 'center'
+				}}
+			>
 				<Button component={Link} to={routes.home}>
 					Home
 				</Button>
@@ -25,7 +28,7 @@ const App = () => (
 					Not found
 				</Button>
 				<SwitchThemeButton />
-			</div>
+			</Box>
 			<Container
 				component="main"
 				sx={{
