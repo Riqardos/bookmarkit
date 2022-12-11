@@ -15,7 +15,7 @@ const App = () => (
 		<LanguageProvider>
 			<CssBaseline />
 			<BrowserRouter>
-				<div className="App">
+				<Box>
 					<Button component={Link} to={routes.home}>
 						Home
 					</Button>
@@ -26,7 +26,7 @@ const App = () => (
 						Not found
 					</Button>
 					<SwitchThemeButton />
-				</div>
+				</Box>
 				<Container
 					maxWidth="sm"
 					component="main"
