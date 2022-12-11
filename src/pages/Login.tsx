@@ -6,19 +6,23 @@ import {
 	Typography,
 	useTheme
 } from '@mui/material';
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import BookAnimation from '../components/BookAnimation';
 import useField from '../hooks/useField';
+import { signIn, signUp } from '../utils/firebase';
 
 const Login = () => {
 	const theme = useTheme();
-	const [_isSignUp, setSignUp] = useState(false);
 
-	const [_email, usernameProps] = useField('email', true);
-	const [_password, passwordProps] = useField('password', true);
+	const navigate = useNavigate();
+	const [isSignUp, setSignUp] = useState(false);
 
-	const [submitError] = useState<string>();
+	const [email, usernameProps] = useField('email', true);
+	const [password, passwordProps] = useField('password', true);
+
+	const [submitError, setSubmitError] = useState<string>();
 	return (
 		<Container
 			sx={{
@@ -42,8 +46,18 @@ const Login = () => {
 			</Box>
 			<Box
 				component="form"
-				onSubmit={() => {
-					console.log('placeholder for submitting');
+				onSubmit={async (e: FormEvent) => {
+					e.preventDefault();
+					try {
+						isSignUp
+							? await signUp(email, password)
+							: await signIn(email, password);
+						navigate('/');
+					} catch (err) {
+						setSubmitError(
+							(err as { message?: string })?.message ?? 'Unknown error occurred'
+						);
+					}
 				}}
 				sx={{
 					display: 'flex',
