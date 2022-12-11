@@ -7,27 +7,16 @@ import { routes } from './routes';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import Home from './pages/Home';
-import SwitchThemeButton from './components/SwitchThemeButton';
 import { ColorModeThemeProvider } from './utils/ColorModeThemeProvider';
 import { LanguageProvider } from './hooks/useTranslation';
+import Navbar from './components/Navbar';
 
 const App = () => (
 	<ColorModeThemeProvider>
 		<LanguageProvider>
 			<CssBaseline />
 			<BrowserRouter>
-				<div className="App">
-					<Button component={Link} to={routes.home}>
-						Home
-					</Button>
-					<Button component={Link} to={routes.login}>
-						Login
-					</Button>
-					<Button component={Link} to={routes.notFound}>
-						Not found
-					</Button>
-					<SwitchThemeButton />
-				</div>
+				<Navbar />
 				<Container
 					maxWidth="sm"
 					component="main"
