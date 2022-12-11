@@ -1,10 +1,18 @@
-import { Box, Button, Container, TextField, Typography } from '@mui/material';
+import {
+	Box,
+	Button,
+	Container,
+	TextField,
+	Typography,
+	useTheme
+} from '@mui/material';
 import React, { useState } from 'react';
 
 import BookAnimation from '../components/BookAnimation';
 import useField from '../hooks/useField';
 
 const Login = () => {
+	const theme = useTheme();
 	const [_isSignUp, setSignUp] = useState(false);
 
 	const [_email, usernameProps] = useField('email', true);
@@ -17,16 +25,17 @@ const Login = () => {
 				display: 'flex',
 				flexDirection: 'row',
 				alignItems: 'center',
-				height: '100%',
-				width: '100%'
+
+				width: '100%',
+				height: '100%'
 			}}
 		>
 			<Box
 				sx={{
 					display: 'flex',
-					height: '100%',
+					alignItems: 'center',
 					width: '50%',
-					alignItems: 'center'
+					height: '100%'
 				}}
 			>
 				<BookAnimation />
@@ -39,8 +48,9 @@ const Login = () => {
 				sx={{
 					display: 'flex',
 					flexDirection: 'column',
-					justifyContent: 'center',
 					alignItems: 'center',
+					justifyContent: 'center',
+
 					p: 4,
 					gap: 2
 				}}
@@ -53,8 +63,9 @@ const Login = () => {
 				<Box
 					sx={{
 						display: 'flex',
-						gap: 2,
 						alignItems: 'center',
+
+						gap: 2,
 						mt: 2
 					}}
 				>
@@ -72,9 +83,9 @@ const Login = () => {
 						variant="outlined"
 						onClick={() => setSignUp(true)}
 						sx={{
-							background: 'orange',
-							color: 'white',
-							borderColor: 'white'
+							background: theme.palette.orange,
+							borderColor: theme.palette.orange,
+							color: 'white'
 						}}
 					>
 						Sign up
@@ -83,10 +94,10 @@ const Login = () => {
 						type="submit"
 						variant="outlined"
 						sx={{
-							background: 'lightBlue',
-							opacity: 0.6,
+							background: theme.palette.lightBlue,
+							filter: 'brightness(110%)',
 							borderColor: 'white',
-							color: 'darkBlue'
+							color: theme.palette.darkBlue
 						}}
 					>
 						Sign in
