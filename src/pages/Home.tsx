@@ -1,16 +1,7 @@
 import React from 'react';
 
-import SelectLanguage from '../components/SelectLanguage';
-import { useTranslation } from '../hooks/useTranslation';
+import TreeViewDnD from '../components/TreeViewDnD';
 
-const Home = () => {
-	const t = useTranslation();
-	return (
-		<>
-			<span>{t('test')}</span>
-			<SelectLanguage />
-		</>
-	);
-};
+const Home = () => <TreeViewDnD />;
 
 export default Home;
