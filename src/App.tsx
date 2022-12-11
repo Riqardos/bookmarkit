@@ -15,7 +15,11 @@ const App = () => (
 		<LanguageProvider>
 			<CssBaseline />
 			<BrowserRouter>
-				<Box>
+				<Box
+					sx={{
+						textAlign: 'center'
+					}}
+				>
 					<Button component={Link} to={routes.home}>
 						Home
 					</Button>
@@ -28,14 +32,13 @@ const App = () => (
 					<SwitchThemeButton />
 				</Box>
 				<Container
-					maxWidth="sm"
 					component="main"
 					sx={{
 						display: 'flex',
 						flexDirection: 'column',
 						justifyContent: 'center',
 						alignItems: 'center',
-						height: '100vh',
+						height: '100%',
 						pt: 8,
 						gap: 2
 					}}
