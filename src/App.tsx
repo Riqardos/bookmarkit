@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import { Button, Container, CssBaseline } from '@mui/material';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Container, CssBaseline } from '@mui/material';
 
 import { routes } from './routes';
 import NotFound from './pages/NotFound';

@@ -44,6 +44,7 @@ const getThemeModePalette = (mode: PaletteMode) => ({
 					},
 					background: {
 						default: grey[100],
+						navbar: grey[300],
 						paper: grey[200]
 					},
 					// custom colors, use preferably
@@ -68,7 +69,8 @@ const getThemeModePalette = (mode: PaletteMode) => ({
 					},
 					background: {
 						default: grey[900],
-						paper: grey[800]
+						paper: grey[800],
+						navbar: grey[300]
 					},
 					// applied to icons
 					text: {
