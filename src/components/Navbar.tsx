@@ -36,7 +36,11 @@ const Navbar = () => {
 						<Logo height="100%" />
 					</Button>
 
-					<Box>
+					<Box
+						sx={{
+							display: 'flex'
+						}}
+					>
 						<Button
 							component={Link}
 							to={routes.login}
