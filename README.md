@@ -33,7 +33,7 @@
     <img src="src/assets/navbarlogo.svg" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">BookmarkIt</h3>
+<h3 align="center">BOOKMARKIT</h3>
 
   <p align="center">
     React app for creating, editing and sharing bookmarks
@@ -79,9 +79,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+TODO
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -162,7 +160,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -186,19 +184,19 @@ Project Link: [https://github.com/Riqardos/bookmarkit](https://github.com/Riqard
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/Riqardos/bookmarkit.svg?style=for-the-badge
 [contributors-url]: https://github.com/Riqardos/bookmarkit/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/Riqardos/bookmarkit.svg?style=for-the-badge
 [forks-url]: https://github.com/Riqardos/bookmarkit/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/Riqardos/bookmarkit.svg?style=for-the-badge
 [stars-url]: https://github.com/Riqardos/bookmarkit/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/Riqardos/bookmarkit.svg?style=for-the-badge
 [issues-url]: https://github.com/Riqardos/bookmarkit/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/Riqardos/bookmarkit/blob/master/LICENSE.txt
+[license-shield]: https://img.shields.io/github/license/Riqardos/bookmarkit.svg?style=for-the-badge
+[license-url]: https://github.com/Riqardos/bookmarkit/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
+[linkedin-url]: https://www.linkedin.com/in/richard-ka%C5%A1tiak-226983115/
+[product-screenshot]: src/assets/navbarlogo.svg
 [next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [next-url]: https://nextjs.org/
 [react.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
