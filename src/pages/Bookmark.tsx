@@ -40,7 +40,8 @@ const getLastId = (treeData: NodeModel[]) => {
 
 const useStyles = makeStyles({
 	root: {
-		eight: '100%'
+		height: '100%',
+		width: '100%'
 	},
 	draggingSource: {
 		opacity: 0.3
@@ -150,44 +151,62 @@ const Bookmark = () => {
 
 	return (
 		<DndProvider backend={MultiBackend} options={getBackendOptions()}>
-			<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-				<Button onClick={handleOpenDialog} startIcon={<AddIcon />}>
-					Add Bookmark
-				</Button>
-				<FormControlLabel control={<Switch {...switchProps} />} label="Edit" />
-				{dialogOpen && (
-					<AddDialog
-						open={dialogOpen}
-						nodeDialog={nodeDialog}
-						tree={treeData}
-						onClose={handleCloseDialog}
-						onSubmit={handleSubmit}
-						onEdit={editNode}
-					/>
-				)}
-			</Box>
-			<Tree
-				tree={treeData}
-				rootId={0}
-				render={(node, { depth, isOpen, onToggle }) => (
-					<CustomNode
-						node={node}
-						depth={depth}
-						isOpen={isOpen}
-						editEnabled={editEnabled}
-						onToggle={onToggle}
-						onDelete={handleDelete}
-						onEdit={handleEdit}
-					/>
-				)}
-				onDrop={handleDrop}
-				canDrag={() => editEnabled}
-				classes={{
-					root: styles.root,
-					draggingSource: styles.draggingSource,
-					dropTarget: styles.dropTarget
+			<Box
+				sx={{
+					display: 'flex',
+					flexDirection: 'column',
+					width: '50%',
+					height: '100%'
 				}}
-			/>
+			>
+				<Box
+					sx={{
+						display: 'flex',
+						justifyContent: 'space-between',
+						width: '100%'
+					}}
+				>
+					<Button onClick={handleOpenDialog} startIcon={<AddIcon />}>
+						Add Bookmark
+					</Button>
+					<FormControlLabel
+						control={<Switch {...switchProps} />}
+						label="Edit"
+					/>
+					{dialogOpen && (
+						<AddDialog
+							open={dialogOpen}
+							nodeDialog={nodeDialog}
+							tree={treeData}
+							onClose={handleCloseDialog}
+							onSubmit={handleSubmit}
+							onEdit={editNode}
+						/>
+					)}
+				</Box>
+				<Tree
+					tree={treeData}
+					rootId={0}
+					render={(node, { depth, isOpen, onToggle }) => (
+						<CustomNode
+							node={node}
+							depth={depth}
+							isOpen={isOpen}
+							editEnabled={editEnabled}
+							onToggle={onToggle}
+							onDelete={handleDelete}
+							onEdit={handleEdit}
+						/>
+					)}
+					onDrop={handleDrop}
+					canDrag={() => editEnabled}
+					classes={{
+						root: styles.root,
+						draggingSource: styles.draggingSource,
+						dropTarget: styles.dropTarget
+					}}
+				/>
+			</Box>
 		</DndProvider>
 	);
 };
