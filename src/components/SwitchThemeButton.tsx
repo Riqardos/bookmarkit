@@ -1,4 +1,4 @@
-import { DarkMode, WbSunny } from '@mui/icons-material';
+import { DarkModeOutlined, WbSunny } from '@mui/icons-material';
 import { IconButton, useTheme } from '@mui/material';
 import { useContext } from 'react';
 
@@ -15,7 +15,7 @@ const SwitchThemeButton = () => {
 			color="inherit"
 		>
 			{theme.palette.mode === 'light' ? (
-				<DarkMode fontSize="large" />
+				<DarkModeOutlined fontSize="large" />
 			) : (
 				<WbSunny fontSize="large" />
 			)}

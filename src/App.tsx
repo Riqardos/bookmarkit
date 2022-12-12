@@ -1,36 +1,21 @@
 import React from 'react';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import { Box, Button, Container, CssBaseline } from '@mui/material';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Container, CssBaseline } from '@mui/material';
 
 import { routes } from './routes';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import Home from './pages/Home';
-import SwitchThemeButton from './components/SwitchThemeButton';
 import { ColorModeThemeProvider } from './utils/ColorModeThemeProvider';
 import { LanguageProvider } from './hooks/useTranslation';
+import Navbar from './components/Navbar';
 
 const App = () => (
 	<ColorModeThemeProvider>
 		<LanguageProvider>
 			<CssBaseline />
 			<BrowserRouter>
-				<Box
-					sx={{
-						textAlign: 'center'
-					}}
-				>
-					<Button component={Link} to={routes.home}>
-						Home
-					</Button>
-					<Button component={Link} to={routes.login}>
-						Login
-					</Button>
-					<Button component={Link} to={routes.notFound}>
-						Not found
-					</Button>
-					<SwitchThemeButton />
-				</Box>
+				<Navbar />
 				<Container
 					component="main"
 					sx={{
