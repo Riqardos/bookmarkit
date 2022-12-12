@@ -1,14 +1,16 @@
 import { AppBar, Box, Button, Container, Toolbar } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as Logo } from '../assets/navbarlogo.svg';
+import useLoggedInUser from '../hooks/useLoggedInUser';
 import { routes } from '../routes';
+import { signOut } from '../utils/firebase';
 
 import SwitchThemeButton from './SwitchThemeButton';
 
 const Navbar = () => {
-	console.log('afa');
+	const user = useLoggedInUser();
 
 	return (
 		<AppBar
@@ -37,16 +39,30 @@ const Navbar = () => {
 					</Button>
 
 					<Box>
-						<Button
-							component={Link}
-							to={routes.login}
-							sx={{
-								fontFamily: 'inherit',
-								color: 'orange'
-							}}
-						>
-							Login
-						</Button>
+						{!user ? (
+							<Button
+								component={Link}
+								to={routes.login}
+								sx={{
+									fontFamily: 'inherit',
+									color: 'orange'
+								}}
+							>
+								Login
+							</Button>
+						) : (
+							<Button
+								onClick={signOut}
+								component={Link}
+								to={routes.login}
+								sx={{
+									fontFamily: 'inherit',
+									color: 'orange'
+								}}
+							>
+								Logout
+							</Button>
+						)}
 						<SwitchThemeButton />
 					</Box>
 				</Toolbar>
