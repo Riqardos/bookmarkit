@@ -29,19 +29,19 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/Riqardos/bookmarkit/">
+    <img src="src/assets/navbarlogo.svg" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">BookmarkIt</h3>
 
   <p align="center">
-    project_description
+    React app for creating, editing and sharing bookmarks
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Riqardos/bookmarkit/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/Riqardos/bookmarkit/">View Demo</a>
     ·
     <a href="https://github.com/Riqardos/bookmarkit/issues">Report Bug</a>
     ·
