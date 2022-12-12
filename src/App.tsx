@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Container, CssBaseline } from '@mui/material';
 
@@ -18,14 +17,13 @@ const App = () => (
 			<BrowserRouter>
 				<Navbar />
 				<Container
-					maxWidth="sm"
 					component="main"
 					sx={{
 						display: 'flex',
 						flexDirection: 'column',
 						justifyContent: 'center',
 						alignItems: 'center',
-						height: '100vh',
+						height: '100%',
 						pt: 8,
 						gap: 2
 					}}
