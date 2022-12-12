@@ -10,7 +10,7 @@ import {
 import { Box, Button, FormControlLabel, Switch } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { makeStyles } from '@mui/styles';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { onSnapshot, setDoc } from 'firebase/firestore';
 
 import { useSwitch } from '../hooks/useSwitch';
@@ -18,6 +18,7 @@ import { CustomNode } from '../components/CustomNode';
 import { AddDialog } from '../components/AddDialog';
 import { CustomData } from '../components/types';
 import { bookmarksDocument } from '../utils/firebase';
+import { routes } from '../routes';
 
 const getLastId = (treeData: NodeModel[]) => {
 	const reversedArray = [...treeData].sort((a, b) => {
@@ -62,12 +63,17 @@ const Bookmark = () => {
 	>(undefined);
 	const [editEnabled, switchProps] = useSwitch('editSwitch');
 	const styles = useStyles();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		// Call onSnapshot() to listen to changes
 		if (id) {
 			const unsubscribe = onSnapshot(bookmarksDocument(id), doc => {
-				setTreeData(doc.exists() ? doc.data().bookmarks : []);
+				if (doc.exists()) {
+					setTreeData(doc.data().bookmarks);
+				} else {
+					navigate(routes.notFound);
+				}
 			});
 
 			return () => {
