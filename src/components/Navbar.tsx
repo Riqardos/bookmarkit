@@ -1,5 +1,4 @@
 import { AppBar, Box, Button, Container, Toolbar } from '@mui/material';
-import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as Logo } from '../assets/navbarlogo.svg';

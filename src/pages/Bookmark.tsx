@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import {
 	Tree,
@@ -10,69 +10,14 @@ import {
 import { Box, Button, FormControlLabel, Switch } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { makeStyles } from '@mui/styles';
+import { useParams } from 'react-router-dom';
+import { onSnapshot, setDoc } from 'firebase/firestore';
 
 import { useSwitch } from '../hooks/useSwitch';
-
-import { CustomNode } from './CustomNode';
-import { AddDialog } from './AddDialog';
-import { CustomData } from './types';
-
-const sampleData = [
-	{
-		id: 1,
-		parent: 0,
-		droppable: true,
-		text: 'Folder 1'
-	},
-	{
-		id: 2,
-		parent: 1,
-		droppable: false,
-		text: 'File 1-1',
-		data: {
-			url: 'https://github.com/shunjizhan/react-folder-tree'
-		}
-	},
-	{
-		id: 3,
-		parent: 1,
-		droppable: false,
-		text: 'File 1-2',
-		data: {
-			url: 'https://github.com/shunjizhan/react-folder-tree'
-		}
-	},
-	{
-		id: 4,
-		parent: 0,
-		droppable: true,
-		text: 'Folder 2'
-	},
-	{
-		id: 5,
-		parent: 4,
-		droppable: true,
-		text: 'Folder 2-1'
-	},
-	{
-		id: 6,
-		parent: 5,
-		droppable: false,
-		text: 'File 2-1-1',
-		data: {
-			url: 'https://github.com/shunjizhan/react-folder-tree'
-		}
-	},
-	{
-		id: 7,
-		parent: 0,
-		droppable: false,
-		text: 'react-folder-tree',
-		data: {
-			url: 'https://github.com/shunjizhan/react-folder-tree'
-		}
-	}
-];
+import { CustomNode } from '../components/CustomNode';
+import { AddDialog } from '../components/AddDialog';
+import { CustomData } from '../components/types';
+import { bookmarksDocument } from '../utils/firebase';
 
 const getLastId = (treeData: NodeModel[]) => {
 	const reversedArray = [...treeData].sort((a, b) => {
@@ -104,9 +49,12 @@ const useStyles = makeStyles({
 	}
 });
 
-const TreeViewDnD = () => {
-	const [treeData, setTreeData] = useState<NodeModel<CustomData>[]>(sampleData);
-	const handleDrop = (newTree: NodeModel<CustomData>[]) => setTreeData(newTree);
+const Bookmark = () => {
+	const { id } = useParams();
+	const [treeData, setTreeData] = useState<NodeModel<CustomData>[]>([]);
+	const handleDrop = async (newTree: NodeModel<CustomData>[]) => {
+		updateTree(newTree);
+	};
 	const [dialogOpen, setDialogOpen] = useState<boolean>(false);
 
 	const [nodeDialog, setNodeDialog] = useState<
@@ -114,6 +62,25 @@ const TreeViewDnD = () => {
 	>(undefined);
 	const [editEnabled, switchProps] = useSwitch('editSwitch');
 	const styles = useStyles();
+
+	useEffect(() => {
+		// Call onSnapshot() to listen to changes
+		if (id) {
+			const unsubscribe = onSnapshot(bookmarksDocument(id), doc => {
+				setTreeData(doc.exists() ? doc.data().bookmarks : []);
+			});
+
+			return () => {
+				unsubscribe();
+			};
+		}
+	}, [id]);
+
+	const updateTree = (newTreeData: NodeModel<CustomData>[]) => {
+		if (id) {
+			setDoc(bookmarksDocument(id), { bookmarks: newTreeData });
+		}
+	};
 
 	const handleOpenDialog = () => {
 		setDialogOpen(true);
@@ -125,16 +92,17 @@ const TreeViewDnD = () => {
 
 	const handleSubmit = (newNode: Omit<NodeModel<CustomData>, 'id'>) => {
 		const lastId = getLastId(treeData) + 1;
-
-		setTreeData([
+		const newTree = [
 			...treeData,
 			{
 				...newNode,
 				id: lastId
 			}
-		]);
+		];
 
+		// setTreeData(newTree);
 		setDialogOpen(false);
+		updateTree(newTree);
 	};
 
 	const handleDelete = (id: NodeModel['id']) => {
@@ -144,15 +112,16 @@ const TreeViewDnD = () => {
 		];
 		const newTree = treeData.filter(node => !deleteIds.includes(node.id));
 
-		setTreeData(newTree);
+		// setTreeData(newTree);
+		updateTree(newTree);
 	};
 
 	const editNode = (
-		id: NodeModel['id'],
+		nodeId: NodeModel['id'],
 		editNode: Omit<NodeModel<CustomData>, 'id'>
 	) => {
 		const newTree = treeData.map(node => {
-			if (node.id === id) {
+			if (node.id === nodeId) {
 				return {
 					id: node.id,
 					...editNode
@@ -161,8 +130,8 @@ const TreeViewDnD = () => {
 
 			return node;
 		});
-
-		setTreeData(newTree);
+		// setTreeData(newTree);
+		updateTree(newTree);
 		setDialogOpen(false);
 		setNodeDialog(undefined);
 	};
@@ -217,4 +186,4 @@ const TreeViewDnD = () => {
 	);
 };
 
-export default TreeViewDnD;
+export default Bookmark;
