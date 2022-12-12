@@ -1,4 +1,11 @@
-import { AppBar, Box, Button, Container, Toolbar } from '@mui/material';
+import {
+	AppBar,
+	Box,
+	Button,
+	Container,
+	Toolbar,
+	Typography
+} from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -28,12 +35,23 @@ const Navbar = () => {
 					}}
 				>
 					<Box />
-					<Button component={Link} to={routes.home} sx={{ height: '3rem' }}>
+					<Button
+						component={Link}
+						to={routes.home}
+						sx={{ height: '3rem', borderRadius: '1rem' }}
+					>
 						<Logo height="100%" />
 					</Button>
 
 					<Box>
-						<Button component={Link} to={routes.login}>
+						<Button
+							component={Link}
+							to={routes.login}
+							sx={{
+								fontFamily: 'inherit',
+								color: 'orange'
+							}}
+						>
 							Login
 						</Button>
 						<SwitchThemeButton />
