@@ -15,7 +15,9 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.4",
     "react-scripts": "5.0.1",
-    "react-uuid": "^2.0.0"
+    "react-uuid": "^2.0.0",
+    "uuid": "^9.0.0",
+    "uuid-validate": "^0.0.3"
   },
   "devDependencies": {
     "@haaxor1689/eslint-config": "2.0.2",
@@ -24,6 +26,8 @@
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
     "@types/react-router-dom": "^5.3.3",
+    "@types/uuid": "^9.0.0",
+    "@types/uuid-validate": "^0.0.1",
     "@typescript-eslint/eslint-plugin": "5.38.1",
     "@typescript-eslint/parser": "5.38.1",
     "eslint": "8.24.0",

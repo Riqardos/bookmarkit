@@ -96,7 +96,7 @@ export const AddDialog: React.FC<Props> = props => {
 								color="primary"
 							/>
 						}
-						label="Is folder?"
+						label="Is a folder?"
 					/>
 					{!droppable && (
 						<TextField label="Url" onChange={handleChangeUrl} value={url} />

@@ -51,6 +51,12 @@ const db = getFirestore();
 
 // Reviews collection
 export type Bookmark = {
+	id: string;
+	title: string;
+	description: string;
+	imageUrl?: string;
+	isPublic: boolean;
+	author: string;
 	bookmarks: NodeModel<CustomData>[];
 };
 

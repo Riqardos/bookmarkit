@@ -1,31 +1,37 @@
+import React from 'react';
 import {
 	Button,
 	Card,
 	CardActions,
 	CardContent,
+	CardHeader,
 	CardMedia,
 	Typography
 } from '@mui/material';
-import React from 'react';
 
-const BookmarkTile = ({ title }: { title: string }) => {
+import { Bookmark } from '../../utils/firebase';
+import logo from '../../assets/navbarlogo.svg';
+
+const BookmarkTile = ({ title, description, imageUrl }: Bookmark) => {
 	console.log('afaf');
 	return (
 		<Card sx={{ minWidth: 275, height: '100%' }}>
 			<CardMedia
 				component="img"
-				height="60%"
+				height="50%"
 				width="100%"
 				sx={{
 					objectFit: 'scale-down',
-					background: 'white'
+					background: 'white',
+					padding: '1rem'
 				}}
-				image="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg"
-				alt="Paella dish"
+				src={imageUrl !== '' ? imageUrl : logo}
+				alt="Bookmark logo"
 			/>
+			<CardHeader title={title} />
 			<CardContent>
 				<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-					{title}
+					{description}
 				</Typography>
 			</CardContent>
 			<CardActions>

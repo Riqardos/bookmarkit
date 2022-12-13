@@ -32,7 +32,8 @@ const useUserBookmarks = () => {
 	return {
 		loading,
 		data: bookmarks,
-		error
+		error,
+		setData: setBookmarks
 	};
 };
 

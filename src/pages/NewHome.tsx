@@ -1,42 +1,64 @@
 import React from 'react';
 import { AddCircle } from '@mui/icons-material';
-import { Box, Typography } from '@mui/material';
+import { Box, Tooltip, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 
-import CustomBookmarks from '../components/BookmarkSignpost/CustomBookmarks';
-import SharedBookmarks from '../components/BookmarkSignpost/SharedBookmarks';
 import { useTranslation } from '../hooks/useTranslation';
+import NewBookmarkButton from '../components/BookmarkSignpost/NewBookmarkButton';
+import useGetAllUserBookmarks from '../utils/api/useGetAllUserBookmarks';
+import Bookmarks from '../components/BookmarkSignpost/Bookmarks';
+import SubscribeToBookmarkButton from '../components/BookmarkSignpost/SubscribeToBookmarkButton';
 
 const NewHome = () => {
 	const t = useTranslation();
+	const { customBookmarks, sharedBookmarks, loading, error } =
+		useGetAllUserBookmarks();
+
 	return (
 		<Container
 			sx={{
 				width: '100%',
 				display: 'flex',
 				flexDirection: 'column',
-				marginBottom: 'auto'
+				marginBottom: 'auto',
+				alignItems: 'center'
 			}}
 		>
-			<Typography>My bookmarks</Typography>
 			<Box
 				sx={{
-					display: 'flex'
+					display: 'flex',
+					justifyContent: 'space-between',
+					width: '100%'
 				}}
 			>
-				<Typography>{t('customBookmarks')}</Typography>
-				<AddCircle />
+				<Typography
+					sx={{
+						fontSize: '2rem'
+					}}
+				>
+					{t('customBookmarks')}
+				</Typography>
+				<NewBookmarkButton />
 			</Box>
-			<CustomBookmarks />
+			<Bookmarks error={error} loading={loading} bookmarks={customBookmarks} />
 			<Box
 				sx={{
-					display: 'flex'
+					display: 'flex',
+					justifyContent: 'space-between',
+					width: '100%',
+					marginTop: '1rem'
 				}}
 			>
-				<Typography>{t('sharedBookmarks')}</Typography>
-				<AddCircle />
+				<Typography
+					sx={{
+						fontSize: '2rem'
+					}}
+				>
+					{t('sharedBookmarks')}
+				</Typography>
+				<SubscribeToBookmarkButton />
 			</Box>
-			<SharedBookmarks />
+			<Bookmarks error={error} loading={loading} bookmarks={sharedBookmarks} />
 		</Container>
 	);
 };

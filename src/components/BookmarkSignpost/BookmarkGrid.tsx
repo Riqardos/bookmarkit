@@ -1,11 +1,11 @@
-import { Grid } from '@mui/material';
 import React from 'react';
+import { Grid } from '@mui/material';
 
-import { BookmarkTileType } from '../types';
+import { Bookmark } from '../../utils/firebase';
 
 import BookmarkTile from './BookmarkTile';
 
-const BookmarkGrid = ({ bookmarks }: { bookmarks: string[] }) => (
+const BookmarkGrid = ({ bookmarks }: { bookmarks: Bookmark[] }) => (
 	<Grid
 		container
 		spacing={3}
@@ -13,9 +13,9 @@ const BookmarkGrid = ({ bookmarks }: { bookmarks: string[] }) => (
 			padding: '1rem'
 		}}
 	>
-		{bookmarks.map((b, i) => (
-			<Grid item xs={4} key={i}>
-				<BookmarkTile title={b} />
+		{bookmarks.map(b => (
+			<Grid item xs={4} key={b.id}>
+				<BookmarkTile {...b} />
 			</Grid>
 		))}
 	</Grid>

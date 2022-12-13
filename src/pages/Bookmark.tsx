@@ -85,7 +85,7 @@ const Bookmark = () => {
 
 	const updateTree = (newTreeData: NodeModel<CustomData>[]) => {
 		if (id) {
-			setDoc(bookmarksDocument(id), { bookmarks: newTreeData });
+			// setDoc(bookmarksDocument(id), { bookmarks: newTreeData });
 		}
 	};
 
