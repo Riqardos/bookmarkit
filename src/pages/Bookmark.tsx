@@ -17,7 +17,7 @@ import { useSwitch } from '../hooks/useSwitch';
 import { CustomNode } from '../components/CustomNode';
 import { AddDialog } from '../components/AddDialog';
 import { CustomData } from '../components/types';
-import { bookmarksDocument } from '../utils/firebase';
+import { bookmarksDocument, Bookmark as BookmarkType } from '../utils/firebase';
 import { routes } from '../routes';
 
 const getLastId = (treeData: NodeModel[]) => {
@@ -54,6 +54,7 @@ const useStyles = makeStyles({
 const Bookmark = () => {
 	const { id } = useParams();
 	const [treeData, setTreeData] = useState<NodeModel<CustomData>[]>([]);
+	const [data, setData] = useState<BookmarkType>();
 	const handleDrop = async (newTree: NodeModel<CustomData>[]) => {
 		updateTree(newTree);
 	};
@@ -72,6 +73,7 @@ const Bookmark = () => {
 			const unsubscribe = onSnapshot(bookmarksDocument(id), doc => {
 				if (doc.exists()) {
 					setTreeData(doc.data().bookmarks);
+					setData(doc.data());
 				} else {
 					navigate(routes.notFound);
 				}
@@ -85,7 +87,7 @@ const Bookmark = () => {
 
 	const updateTree = (newTreeData: NodeModel<CustomData>[]) => {
 		if (id) {
-			// setDoc(bookmarksDocument(id), { bookmarks: newTreeData });
+			setDoc(bookmarksDocument(id), { ...data, bookmarks: newTreeData });
 		}
 	};
 
