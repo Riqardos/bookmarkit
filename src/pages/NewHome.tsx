@@ -1,12 +1,14 @@
-import { Typography } from '@mui/material';
-import { Container } from '@mui/system';
 import React from 'react';
+import { AddCircle } from '@mui/icons-material';
+import { Box, Typography } from '@mui/material';
+import { Container } from '@mui/system';
 
 import CustomBookmarks from '../components/BookmarkSignpost/CustomBookmarks';
 import SharedBookmarks from '../components/BookmarkSignpost/SharedBookmarks';
+import { useTranslation } from '../hooks/useTranslation';
 
 const NewHome = () => {
-	console.log('New home');
+	const t = useTranslation();
 	return (
 		<Container
 			sx={{
@@ -17,8 +19,23 @@ const NewHome = () => {
 			}}
 		>
 			<Typography>My bookmarks</Typography>
+			<Box
+				sx={{
+					display: 'flex'
+				}}
+			>
+				<Typography>{t('customBookmarks')}</Typography>
+				<AddCircle />
+			</Box>
 			<CustomBookmarks />
-			<Typography>Shared</Typography>
+			<Box
+				sx={{
+					display: 'flex'
+				}}
+			>
+				<Typography>{t('sharedBookmarks')}</Typography>
+				<AddCircle />
+			</Box>
 			<SharedBookmarks />
 		</Container>
 	);

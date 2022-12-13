@@ -1,3 +1,5 @@
 export default {
-	test: 'domov'
+	test: 'domov',
+	customBookmarks: 'Moje záložky',
+	sharedBookmarks: 'Zdieľané záložky'
 };
