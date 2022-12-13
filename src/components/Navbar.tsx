@@ -63,6 +63,9 @@ const Navbar = () => {
 							</Button>
 						)}
 						<SwitchThemeButton />
+						<Button component={Link} to={routes.home2}>
+							asd
+						</Button>
 					</Box>
 				</Toolbar>
 			</Container>
