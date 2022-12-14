@@ -11,9 +11,11 @@ import { useNavigate } from 'react-router-dom';
 
 import BookAnimation from '../components/BookAnimation';
 import useField from '../hooks/useField';
+import { useTranslation } from '../hooks/useTranslation';
 import { signIn, signUp } from '../utils/firebase';
 
 const Login = () => {
+	const t = useTranslation();
 	const theme = useTheme();
 
 	const navigate = useNavigate();
@@ -71,7 +73,7 @@ const Login = () => {
 				}}
 			>
 				<Typography variant="h4" component="h2" textAlign="center" mb={3}>
-					Login
+					{t('login')}
 				</Typography>
 				<TextField label="email" {...usernameProps} type="email" />
 				<TextField label="password" {...passwordProps} type="password" />
@@ -92,22 +94,22 @@ const Login = () => {
 						>
 							{submitError}
 						</Typography>
-					)}
+					)}{' '}
 					<Button
 						type="submit"
 						variant="outlined"
-						onClick={() => setSignUp(true)}
 						sx={{
 							background: theme.palette.orange,
 							borderColor: theme.palette.orange,
 							color: 'white'
 						}}
 					>
-						Sign up
+						{t('signIn')}
 					</Button>
 					<Button
 						type="submit"
 						variant="outlined"
+						onClick={() => setSignUp(true)}
 						sx={{
 							background: theme.palette.lightBlue,
 							filter: 'brightness(110%)',
@@ -115,7 +117,7 @@ const Login = () => {
 							color: theme.palette.darkBlue
 						}}
 					>
-						Sign in
+						{t('signUp')}
 					</Button>
 				</Box>
 			</Box>

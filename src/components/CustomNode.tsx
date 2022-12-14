@@ -6,6 +6,8 @@ import { Delete } from '@mui/icons-material';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 
+import { useTranslation } from '../hooks/useTranslation';
+
 import { TypeIcon } from './TypeIcon';
 import { CustomData } from './types';
 import { AlertDialog } from './AlertDialog';
@@ -21,6 +23,7 @@ type Props = {
 };
 
 export const CustomNode: React.FC<Props> = props => {
+	const t = useTranslation();
 	const { id, droppable, data } = props.node;
 	const [alertDialogOpen, setAlertDialogOpen] = useState<boolean>(false);
 
@@ -36,7 +39,7 @@ export const CustomNode: React.FC<Props> = props => {
 		<>
 			{alertDialogOpen && (
 				<AlertDialog
-					title="Do you really want to remove this item?"
+					title={t('areYouSureDelete')}
 					onYes={() => props.onDelete(id)}
 					onNo={() => setAlertDialogOpen(false)}
 				/>

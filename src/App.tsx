@@ -1,16 +1,51 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Container, CssBaseline } from '@mui/material';
+import { BrowserRouter } from 'react-router-dom';
+import { Box, Container, CssBaseline } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
-import { routes } from './routes';
-import NotFound from './pages/NotFound';
-import Login from './pages/Login';
-import Home from './pages/Home';
 import { ColorModeThemeProvider } from './utils/ColorModeThemeProvider';
 import { LanguageProvider } from './hooks/useTranslation';
 import Navbar from './components/Navbar';
 import { UserProvider } from './hooks/useLoggedInUser';
-import Bookmark from './pages/Bookmark';
+import AppRoutes from './components/AppRoutes';
+import SwitchThemeButton from './components/SwitchThemeButton';
+import SelectLanguage from './components/SelectLanguage';
+
+const Footer = () => {
+	console.log('afgdsg');
+	return (
+		<Box
+			sx={{
+				width: '100%',
+				maxWidth: '100%',
+				height: '50%',
+				display: 'flex',
+				backgroundColor: 'black',
+				color: 'white',
+				justifyContent: 'space-around',
+				padding: '6rem'
+			}}
+		>
+			<Box
+				sx={{
+					display: 'flex',
+					alignItems: 'center',
+					color: 'white',
+					spacing: 2
+				}}
+			>
+				<GitHubIcon fontSize="large" />
+				<span>Riqardos/bookmarkit</span>
+			</Box>
+			<Box>
+				<SwitchThemeButton />
+			</Box>
+			<Box>
+				<SelectLanguage />
+			</Box>
+		</Box>
+	);
+};
 
 const App = () => (
 	<ColorModeThemeProvider>
@@ -26,18 +61,14 @@ const App = () => (
 							flexDirection: 'column',
 							justifyContent: 'center',
 							alignItems: 'center',
-							height: '100%',
+							minHeight: '100%',
 							pt: 8,
 							gap: 2
 						}}
 					>
-						<Routes>
-							<Route path={routes.home} element={<Home />} />
-							<Route path={routes.login} element={<Login />} />
-							<Route path={routes.bookmark} element={<Bookmark />} />
-							<Route path={routes.notFound} element={<NotFound />} />
-						</Routes>
+						<AppRoutes />
 					</Container>
+					<Footer />
 				</BrowserRouter>
 			</LanguageProvider>
 		</UserProvider>

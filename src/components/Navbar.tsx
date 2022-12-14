@@ -1,15 +1,23 @@
-import { AppBar, Box, Button, Container, Toolbar } from '@mui/material';
+import {
+	AppBar,
+	Box,
+	Button,
+	Container,
+	Toolbar,
+	useTheme
+} from '@mui/material';
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as Logo } from '../assets/navbarlogo.svg';
 import useLoggedInUser from '../hooks/useLoggedInUser';
+import { useTranslation } from '../hooks/useTranslation';
 import { routes } from '../routes';
 import { signOut } from '../utils/firebase';
 
-import SwitchThemeButton from './SwitchThemeButton';
-
 const Navbar = () => {
+	const t = useTranslation();
 	const user = useLoggedInUser();
+	const theme = useTheme();
 
 	return (
 		<AppBar
@@ -17,7 +25,7 @@ const Navbar = () => {
 				position: 'sticky',
 				display: 'flex',
 				top: 0,
-				background: 'inherit'
+				background: theme.palette.background.paper
 			}}
 		>
 			<Container sx={{ width: '100%' }}>
@@ -47,7 +55,7 @@ const Navbar = () => {
 									color: 'orange'
 								}}
 							>
-								Login
+								{t('login')}
 							</Button>
 						) : (
 							<Button
@@ -59,10 +67,9 @@ const Navbar = () => {
 									color: 'orange'
 								}}
 							>
-								Logout
+								{t('logout')}
 							</Button>
 						)}
-						<SwitchThemeButton />
 					</Box>
 				</Toolbar>
 			</Container>

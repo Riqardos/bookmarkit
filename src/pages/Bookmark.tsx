@@ -7,7 +7,14 @@ import {
 	getBackendOptions,
 	getDescendants
 } from '@minoru/react-dnd-treeview';
-import { Box, Button, FormControlLabel, Switch } from '@mui/material';
+import {
+	Box,
+	Button,
+	Divider,
+	FormControlLabel,
+	Switch,
+	Typography
+} from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { makeStyles } from '@mui/styles';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -17,8 +24,9 @@ import { useSwitch } from '../hooks/useSwitch';
 import { CustomNode } from '../components/CustomNode';
 import { AddDialog } from '../components/AddDialog';
 import { CustomData } from '../components/types';
-import { bookmarksDocument } from '../utils/firebase';
+import { bookmarksDocument, Bookmark as BookmarkType } from '../utils/firebase';
 import { routes } from '../routes';
+import { useTranslation } from '../hooks/useTranslation';
 
 const getLastId = (treeData: NodeModel[]) => {
 	const reversedArray = [...treeData].sort((a, b) => {
@@ -53,7 +61,9 @@ const useStyles = makeStyles({
 
 const Bookmark = () => {
 	const { id } = useParams();
+	const t = useTranslation();
 	const [treeData, setTreeData] = useState<NodeModel<CustomData>[]>([]);
+	const [data, setData] = useState<BookmarkType>();
 	const handleDrop = async (newTree: NodeModel<CustomData>[]) => {
 		updateTree(newTree);
 	};
@@ -72,6 +82,7 @@ const Bookmark = () => {
 			const unsubscribe = onSnapshot(bookmarksDocument(id), doc => {
 				if (doc.exists()) {
 					setTreeData(doc.data().bookmarks);
+					setData(doc.data());
 				} else {
 					navigate(routes.notFound);
 				}
@@ -85,7 +96,7 @@ const Bookmark = () => {
 
 	const updateTree = (newTreeData: NodeModel<CustomData>[]) => {
 		if (id) {
-			setDoc(bookmarksDocument(id), { bookmarks: newTreeData });
+			setDoc(bookmarksDocument(id), { ...data, bookmarks: newTreeData });
 		}
 	};
 
@@ -150,64 +161,116 @@ const Bookmark = () => {
 	};
 
 	return (
-		<DndProvider backend={MultiBackend} options={getBackendOptions()}>
+		<Box
+			sx={{
+				display: 'flex',
+				marginBottom: 'auto',
+				justifyContent: 'space-between'
+			}}
+		>
+			<DndProvider backend={MultiBackend} options={getBackendOptions()}>
+				<Box
+					sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						height: '100%',
+						padding: '2rem'
+					}}
+				>
+					<Box
+						sx={{
+							display: 'flex',
+							justifyContent: 'space-between',
+							width: '100%'
+						}}
+					>
+						<Button onClick={handleOpenDialog} startIcon={<AddIcon />}>
+							{t('addCustomBookmark')}
+						</Button>
+						<FormControlLabel
+							control={<Switch {...switchProps} />}
+							label={t('edit')}
+						/>
+						{dialogOpen && (
+							<AddDialog
+								open={dialogOpen}
+								nodeDialog={nodeDialog}
+								tree={treeData}
+								onClose={handleCloseDialog}
+								onSubmit={handleSubmit}
+								onEdit={editNode}
+							/>
+						)}
+					</Box>
+					<Tree
+						tree={treeData}
+						rootId={0}
+						render={(node, { depth, isOpen, onToggle }) => (
+							<CustomNode
+								node={node}
+								depth={depth}
+								isOpen={isOpen}
+								editEnabled={editEnabled}
+								onToggle={onToggle}
+								onDelete={handleDelete}
+								onEdit={handleEdit}
+							/>
+						)}
+						onDrop={handleDrop}
+						canDrag={() => editEnabled}
+						classes={{
+							root: styles.root,
+							draggingSource: styles.draggingSource,
+							dropTarget: styles.dropTarget
+						}}
+					/>
+				</Box>
+			</DndProvider>
+			<Divider orientation="vertical" />
 			<Box
 				sx={{
+					width: '100%',
 					display: 'flex',
 					flexDirection: 'column',
-					width: '50%',
-					height: '100%'
+					justifyContent: 'space-around'
 				}}
 			>
 				<Box
 					sx={{
 						display: 'flex',
-						justifyContent: 'space-between',
-						width: '100%'
+						flexDirection: 'column',
+						padding: '2rem'
 					}}
 				>
-					<Button onClick={handleOpenDialog} startIcon={<AddIcon />}>
-						Add Bookmark
-					</Button>
-					<FormControlLabel
-						control={<Switch {...switchProps} />}
-						label="Edit"
-					/>
-					{dialogOpen && (
-						<AddDialog
-							open={dialogOpen}
-							nodeDialog={nodeDialog}
-							tree={treeData}
-							onClose={handleCloseDialog}
-							onSubmit={handleSubmit}
-							onEdit={editNode}
-						/>
-					)}
+					<Typography>{t('title')}</Typography>
+					<Typography
+						sx={{
+							color: 'white',
+							fontSize: '2rem'
+						}}
+					>
+						{data?.title}
+					</Typography>
 				</Box>
-				<Tree
-					tree={treeData}
-					rootId={0}
-					render={(node, { depth, isOpen, onToggle }) => (
-						<CustomNode
-							node={node}
-							depth={depth}
-							isOpen={isOpen}
-							editEnabled={editEnabled}
-							onToggle={onToggle}
-							onDelete={handleDelete}
-							onEdit={handleEdit}
-						/>
-					)}
-					onDrop={handleDrop}
-					canDrag={() => editEnabled}
-					classes={{
-						root: styles.root,
-						draggingSource: styles.draggingSource,
-						dropTarget: styles.dropTarget
+				<Box
+					sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						padding: '2rem'
 					}}
-				/>
+				>
+					<Typography>{t('bookmarkDescription')}</Typography>
+					<Typography
+						sx={{
+							color: 'white',
+							fontSize: '1rem'
+						}}
+					>
+						{data?.description}
+					</Typography>
+				</Box>
 			</Box>
-		</DndProvider>
+		</Box>
 	);
 };
 

@@ -7,6 +7,8 @@ import {
 	DialogActions
 } from '@mui/material';
 
+import { useTranslation } from '../hooks/useTranslation';
+
 type Props = {
 	title: string;
 	description?: string;
@@ -14,13 +16,16 @@ type Props = {
 	onYes: () => void;
 };
 
-export const AlertDialog: React.FC<Props> = props => (
-	<Dialog open onClose={props.onNo} maxWidth="xl">
-		<DialogTitle>{props.title}</DialogTitle>
-		<DialogContent>{props.description}</DialogContent>
-		<DialogActions>
-			<Button onClick={props.onYes}>Yes</Button>
-			<Button onClick={props.onNo}>No</Button>
-		</DialogActions>
-	</Dialog>
-);
+export const AlertDialog: React.FC<Props> = props => {
+	const t = useTranslation();
+	return (
+		<Dialog open onClose={props.onNo} maxWidth="xl">
+			<DialogTitle>{props.title}</DialogTitle>
+			<DialogContent>{props.description}</DialogContent>
+			<DialogActions>
+				<Button onClick={props.onYes}>{t('yes')}</Button>
+				<Button onClick={props.onNo}>{t('no')}</Button>
+			</DialogActions>
+		</Dialog>
+	);
+};

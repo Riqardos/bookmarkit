@@ -1,5 +1,10 @@
 import React from 'react';
 
-const NotFound = () => <span>NOT_FOUND PAGE</span>;
+import { useTranslation } from '../hooks/useTranslation';
+
+const NotFound = () => {
+	const t = useTranslation();
+	return <span>{t('notFound')}</span>;
+};
 
 export default NotFound;
