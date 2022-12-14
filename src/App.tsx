@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Box, Container, CssBaseline } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 

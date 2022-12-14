@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-	Button,
 	Card,
 	CardActions,
 	CardContent,
@@ -12,14 +11,12 @@ import { useNavigate } from 'react-router-dom';
 
 import { Bookmark } from '../../utils/firebase';
 import logo from '../../assets/navbarlogo.svg';
+import CopyIdToClipboard from '../CopyIdToClipboard';
 
 const BookmarkTile = ({ title, description, imageUrl, id }: Bookmark) => {
 	const navigation = useNavigate();
 	return (
-		<Card
-			sx={{ minWidth: 275, height: '100%' }}
-			onClick={() => navigation(`/bookmarks/${id}`)}
-		>
+		<Card sx={{ minWidth: 275, height: '75%' }}>
 			<CardMedia
 				component="img"
 				height="50%"
@@ -33,13 +30,13 @@ const BookmarkTile = ({ title, description, imageUrl, id }: Bookmark) => {
 				alt="Bookmark logo"
 			/>
 			<CardHeader title={title} />
-			<CardContent>
+			<CardContent onClick={() => navigation(`/bookmarks/${id}`)}>
 				<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
 					{description}
 				</Typography>
 			</CardContent>
 			<CardActions>
-				<Button size="small">TODO</Button>
+				<CopyIdToClipboard id={id} />
 			</CardActions>
 		</Card>
 	);

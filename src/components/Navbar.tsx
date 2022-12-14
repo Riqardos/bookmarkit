@@ -7,8 +7,6 @@ import { useTranslation } from '../hooks/useTranslation';
 import { routes } from '../routes';
 import { signOut } from '../utils/firebase';
 
-import SwitchThemeButton from './SwitchThemeButton';
-
 const Navbar = () => {
 	const t = useTranslation();
 	const user = useLoggedInUser();

@@ -1,6 +1,5 @@
 import React from 'react';
-import { AddCircle } from '@mui/icons-material';
-import { Box, Tooltip, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 
 import { useTranslation } from '../hooks/useTranslation';
