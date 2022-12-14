@@ -9,8 +9,3 @@ export type NodeModel<T = unknown> = {
 	text: string;
 	data?: T;
 };
-
-export type BookmarkTileType = {
-	id: number;
-	title: string;
-};

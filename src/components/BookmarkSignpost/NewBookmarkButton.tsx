@@ -61,10 +61,10 @@ const NewBookmarkButton = () => {
 				>
 					<DialogContentText>{t('addCustomBookmarkText')}</DialogContentText>
 					<Divider />
-					<TextField label="Name" {...titleProps} type="text" />
-					<TextField label="Image URL" {...imageUrlProps} type="text" />
+					<TextField label={t('name')} {...titleProps} type="text" />
+					<TextField label={t('imageUrl')} {...imageUrlProps} type="text" />
 					<TextField
-						label="Description"
+						label={t('bookmarkDescription')}
 						{...descriptionProps}
 						type="text"
 						multiline
@@ -81,7 +81,7 @@ const NewBookmarkButton = () => {
 										inputProps={{ 'aria-label': 'controlled' }}
 									/>
 								}
-								label={isPublic ? 'Public' : 'Private'}
+								label={isPublic ? t('public') : t('private')}
 							/>
 						</FormGroup>
 						<FormHelperText>
@@ -90,13 +90,13 @@ const NewBookmarkButton = () => {
 					</FormControl>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={handleClose}>Cancel</Button>
+					<Button onClick={handleClose}>{t('cancel')}</Button>
 					<Button
 						onClick={handleClickSubmit}
 						variant="outlined"
 						sx={{ background: 'orange' }}
 					>
-						Create
+						{t('submit')}
 					</Button>
 				</DialogActions>
 			</Dialog>

@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 
 import { ReactComponent as Logo } from '../assets/navbarlogo.svg';
 import useLoggedInUser from '../hooks/useLoggedInUser';
+import { useTranslation } from '../hooks/useTranslation';
 import { routes } from '../routes';
 import { signOut } from '../utils/firebase';
 
 import SwitchThemeButton from './SwitchThemeButton';
 
 const Navbar = () => {
+	const t = useTranslation();
 	const user = useLoggedInUser();
 
 	return (
@@ -47,7 +49,7 @@ const Navbar = () => {
 									color: 'orange'
 								}}
 							>
-								Login
+								{t('login')}
 							</Button>
 						) : (
 							<Button
@@ -59,13 +61,10 @@ const Navbar = () => {
 									color: 'orange'
 								}}
 							>
-								Logout
+								{t('logout')}
 							</Button>
 						)}
 						<SwitchThemeButton />
-						<Button component={Link} to={routes.home2}>
-							asd
-						</Button>
 					</Box>
 				</Toolbar>
 			</Container>

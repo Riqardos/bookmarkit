@@ -39,7 +39,7 @@ const BookmarkTile = ({ title, description, imageUrl, id }: Bookmark) => {
 				</Typography>
 			</CardContent>
 			<CardActions>
-				<Button size="small">Learn More</Button>
+				<Button size="small">TODO</Button>
 			</CardActions>
 		</Card>
 	);

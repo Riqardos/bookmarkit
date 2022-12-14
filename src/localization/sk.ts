@@ -1,5 +1,4 @@
 export default {
-	test: 'domov',
 	customBookmarks: 'Moje záložky',
 	sharedBookmarks: 'Zdieľané záložky',
 	addCustomBookmark: 'Nová záložka',
@@ -11,5 +10,25 @@ export default {
 		'Zadajte UUID už existujúcej záložky, ktorú chcete sledovať alebo rozširovať.',
 	notSignedIn: 'Užívateľ nie je prihlásený.',
 	invalidUUID: 'Zadané UUID nie je valídne.',
-	nonExistingUUID: 'Zadané UUID neexistuje.'
+	nonExistingUUID: 'Zadané UUID neexistuje.',
+	error: 'Vyskytol sa nečakaný problém. Skúste to neskôr.',
+	bookmarkDescription: 'Popis',
+	imageUrl: 'URL obrázku',
+	name: 'Meno',
+	public: 'Verejné',
+	private: 'Súkromné',
+	cancel: 'Zatvoriť',
+	submit: 'Potvrdiť',
+	bookmarkName: 'Meno záložky',
+	isFolder: 'Je to priečinok?',
+	folder: 'Priečinok',
+	yes: 'Áno',
+	no: 'Nie',
+	areYouSureDelete: 'Naozaj to chcete vymazať?',
+	login: 'Prihlásiť sa',
+	logout: 'Odhlásiť sa',
+	edit: 'Upraviť',
+	signUp: 'Registrovať sa',
+	signIn: 'Prihlásiť sa',
+	notFound: 'Nič sa tu nenachádza.'
 };

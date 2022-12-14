@@ -1,5 +1,5 @@
 import { setDoc } from 'firebase/firestore';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { validate } from 'uuid';
 
 import useLoggedInUser from '../../hooks/useLoggedInUser';

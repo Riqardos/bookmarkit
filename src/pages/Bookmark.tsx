@@ -19,6 +19,7 @@ import { AddDialog } from '../components/AddDialog';
 import { CustomData } from '../components/types';
 import { bookmarksDocument, Bookmark as BookmarkType } from '../utils/firebase';
 import { routes } from '../routes';
+import { useTranslation } from '../hooks/useTranslation';
 
 const getLastId = (treeData: NodeModel[]) => {
 	const reversedArray = [...treeData].sort((a, b) => {
@@ -53,6 +54,7 @@ const useStyles = makeStyles({
 
 const Bookmark = () => {
 	const { id } = useParams();
+	const t = useTranslation();
 	const [treeData, setTreeData] = useState<NodeModel<CustomData>[]>([]);
 	const [data, setData] = useState<BookmarkType>();
 	const handleDrop = async (newTree: NodeModel<CustomData>[]) => {
@@ -169,11 +171,11 @@ const Bookmark = () => {
 					}}
 				>
 					<Button onClick={handleOpenDialog} startIcon={<AddIcon />}>
-						Add Bookmark
+						{t('addCustomBookmark')}
 					</Button>
 					<FormControlLabel
 						control={<Switch {...switchProps} />}
-						label="Edit"
+						label={t('edit')}
 					/>
 					{dialogOpen && (
 						<AddDialog

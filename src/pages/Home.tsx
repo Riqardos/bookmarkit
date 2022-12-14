@@ -9,7 +9,7 @@ import useGetAllUserBookmarks from '../utils/api/useGetAllUserBookmarks';
 import Bookmarks from '../components/BookmarkSignpost/Bookmarks';
 import SubscribeToBookmarkButton from '../components/BookmarkSignpost/SubscribeToBookmarkButton';
 
-const NewHome = () => {
+const Home = () => {
 	const t = useTranslation();
 	const { customBookmarks, sharedBookmarks, loading, error } =
 		useGetAllUserBookmarks();
@@ -63,4 +63,4 @@ const NewHome = () => {
 	);
 };
 
-export default NewHome;
+export default Home;

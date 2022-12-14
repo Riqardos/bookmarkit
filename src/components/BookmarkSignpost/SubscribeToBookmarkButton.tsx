@@ -19,7 +19,6 @@ import { useState } from 'react';
 
 import useField from '../../hooks/useField';
 import { useTranslation } from '../../hooks/useTranslation';
-import useCreateCustomBookmark from '../../utils/api/useCreateCustomBookmark';
 import useSubscribeToBookmark from '../../utils/api/useSubscribeToBookmark';
 
 const SubscribeToBookmarkButton = () => {
@@ -57,18 +56,18 @@ const SubscribeToBookmarkButton = () => {
 				>
 					<DialogContentText>{t('subscribeToBookmarkText')}</DialogContentText>
 					<Divider />
-					<TextField label="Name" {...uuidProps} type="text" />
+					<TextField label={t('name')} {...uuidProps} type="text" />
 					<Divider />
 					{submitError && <span>{submitError}</span>}
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={handleClose}>Cancel</Button>
+					<Button onClick={handleClose}>{t('cancel')}</Button>
 					<Button
 						onClick={handleClickSubmit}
 						variant="outlined"
 						sx={{ background: 'orange' }}
 					>
-						Create
+						{t('submit')}
 					</Button>
 				</DialogActions>
 			</Dialog>

@@ -18,7 +18,7 @@ const Bookmarks = ({
 }) => {
 	const t = useTranslation();
 	if (error) {
-		return <span>Error</span>;
+		return <span>{t('error')}</span>;
 	}
 
 	if (loading || !bookmarks) {

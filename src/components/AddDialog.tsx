@@ -17,6 +17,8 @@ import {
 } from '@mui/material';
 import { NodeModel } from '@minoru/react-dnd-treeview';
 
+import { useTranslation } from '../hooks/useTranslation';
+
 import { CustomData } from './types';
 
 type Props = {
@@ -32,6 +34,7 @@ type Props = {
 };
 
 export const AddDialog: React.FC<Props> = props => {
+	const t = useTranslation();
 	const [text, setText] = useState(
 		props.nodeDialog ? props.nodeDialog.text : ''
 	);
@@ -71,13 +74,17 @@ export const AddDialog: React.FC<Props> = props => {
 					}}
 				>
 					<TextField
-						label="Bookmark name"
+						label={t('bookmarkName')}
 						onChange={handleChangeText}
 						value={text}
 					/>
 					<FormControl sx={{ width: '100%' }}>
-						<InputLabel>Folder</InputLabel>
-						<Select label="Folder" onChange={handleChangeParent} value={parent}>
+						<InputLabel>{t('folder')}</InputLabel>
+						<Select
+							label={t('folder')}
+							onChange={handleChangeParent}
+							value={parent}
+						>
 							<MenuItem value={0}>(root)</MenuItem>
 							{props.tree
 								.filter(node => node.droppable === true)
@@ -96,7 +103,7 @@ export const AddDialog: React.FC<Props> = props => {
 								color="primary"
 							/>
 						}
-						label="Is a folder?"
+						label={t('isFolder')}
 					/>
 					{!droppable && (
 						<TextField label="Url" onChange={handleChangeUrl} value={url} />
@@ -104,7 +111,7 @@ export const AddDialog: React.FC<Props> = props => {
 				</Box>
 			</DialogContent>
 			<DialogActions>
-				<Button onClick={props.onClose}>Cancel</Button>
+				<Button onClick={props.onClose}>{t('cancel')}</Button>
 				<Button
 					disabled={text === ''}
 					onClick={() => {
@@ -129,7 +136,7 @@ export const AddDialog: React.FC<Props> = props => {
 						}
 					}}
 				>
-					Submit
+					{t('submit')}
 				</Button>
 			</DialogActions>
 		</Dialog>
