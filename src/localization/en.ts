@@ -15,6 +15,7 @@ export default {
 	bookmarkDescription: 'Description',
 	imageUrl: 'Image URL',
 	name: 'Name',
+	title: 'Title',
 	public: 'Public',
 	private: 'Private',
 	cancel: 'Cancel',

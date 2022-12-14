@@ -64,7 +64,6 @@ const Navbar = () => {
 								{t('logout')}
 							</Button>
 						)}
-						<SwitchThemeButton />
 					</Box>
 				</Toolbar>
 			</Container>

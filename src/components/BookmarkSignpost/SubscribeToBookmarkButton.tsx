@@ -51,7 +51,7 @@ const SubscribeToBookmarkButton = () => {
 				>
 					<DialogContentText>{t('subscribeToBookmarkText')}</DialogContentText>
 					<Divider />
-					<TextField label={t('name')} {...uuidProps} type="text" />
+					<TextField label="UUID" {...uuidProps} type="text" />
 					<Divider />
 					{submitError && <span>{submitError}</span>}
 				</DialogContent>

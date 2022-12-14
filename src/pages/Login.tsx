@@ -94,22 +94,22 @@ const Login = () => {
 						>
 							{submitError}
 						</Typography>
-					)}
+					)}{' '}
 					<Button
 						type="submit"
 						variant="outlined"
-						onClick={() => setSignUp(true)}
 						sx={{
 							background: theme.palette.orange,
 							borderColor: theme.palette.orange,
 							color: 'white'
 						}}
 					>
-						{t('signUp')}
+						{t('signIn')}
 					</Button>
 					<Button
 						type="submit"
 						variant="outlined"
+						onClick={() => setSignUp(true)}
 						sx={{
 							background: theme.palette.lightBlue,
 							filter: 'brightness(110%)',
@@ -117,7 +117,7 @@ const Login = () => {
 							color: theme.palette.darkBlue
 						}}
 					>
-						{t('signIn')}
+						{t('signUp')}
 					</Button>
 				</Box>
 			</Box>

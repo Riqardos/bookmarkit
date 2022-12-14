@@ -7,7 +7,14 @@ import {
 	getBackendOptions,
 	getDescendants
 } from '@minoru/react-dnd-treeview';
-import { Box, Button, FormControlLabel, Switch } from '@mui/material';
+import {
+	Box,
+	Button,
+	Divider,
+	FormControlLabel,
+	Switch,
+	Typography
+} from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { makeStyles } from '@mui/styles';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -154,64 +161,116 @@ const Bookmark = () => {
 	};
 
 	return (
-		<DndProvider backend={MultiBackend} options={getBackendOptions()}>
+		<Box
+			sx={{
+				display: 'flex',
+				marginBottom: 'auto',
+				justifyContent: 'space-between'
+			}}
+		>
+			<DndProvider backend={MultiBackend} options={getBackendOptions()}>
+				<Box
+					sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						height: '100%',
+						padding: '2rem'
+					}}
+				>
+					<Box
+						sx={{
+							display: 'flex',
+							justifyContent: 'space-between',
+							width: '100%'
+						}}
+					>
+						<Button onClick={handleOpenDialog} startIcon={<AddIcon />}>
+							{t('addCustomBookmark')}
+						</Button>
+						<FormControlLabel
+							control={<Switch {...switchProps} />}
+							label={t('edit')}
+						/>
+						{dialogOpen && (
+							<AddDialog
+								open={dialogOpen}
+								nodeDialog={nodeDialog}
+								tree={treeData}
+								onClose={handleCloseDialog}
+								onSubmit={handleSubmit}
+								onEdit={editNode}
+							/>
+						)}
+					</Box>
+					<Tree
+						tree={treeData}
+						rootId={0}
+						render={(node, { depth, isOpen, onToggle }) => (
+							<CustomNode
+								node={node}
+								depth={depth}
+								isOpen={isOpen}
+								editEnabled={editEnabled}
+								onToggle={onToggle}
+								onDelete={handleDelete}
+								onEdit={handleEdit}
+							/>
+						)}
+						onDrop={handleDrop}
+						canDrag={() => editEnabled}
+						classes={{
+							root: styles.root,
+							draggingSource: styles.draggingSource,
+							dropTarget: styles.dropTarget
+						}}
+					/>
+				</Box>
+			</DndProvider>
+			<Divider orientation="vertical" />
 			<Box
 				sx={{
+					width: '100%',
 					display: 'flex',
 					flexDirection: 'column',
-					width: '50%',
-					height: '100%'
+					justifyContent: 'space-around'
 				}}
 			>
 				<Box
 					sx={{
 						display: 'flex',
-						justifyContent: 'space-between',
-						width: '100%'
+						flexDirection: 'column',
+						padding: '2rem'
 					}}
 				>
-					<Button onClick={handleOpenDialog} startIcon={<AddIcon />}>
-						{t('addCustomBookmark')}
-					</Button>
-					<FormControlLabel
-						control={<Switch {...switchProps} />}
-						label={t('edit')}
-					/>
-					{dialogOpen && (
-						<AddDialog
-							open={dialogOpen}
-							nodeDialog={nodeDialog}
-							tree={treeData}
-							onClose={handleCloseDialog}
-							onSubmit={handleSubmit}
-							onEdit={editNode}
-						/>
-					)}
+					<Typography>{t('title')}</Typography>
+					<Typography
+						sx={{
+							color: 'white',
+							fontSize: '2rem'
+						}}
+					>
+						{data?.title}
+					</Typography>
 				</Box>
-				<Tree
-					tree={treeData}
-					rootId={0}
-					render={(node, { depth, isOpen, onToggle }) => (
-						<CustomNode
-							node={node}
-							depth={depth}
-							isOpen={isOpen}
-							editEnabled={editEnabled}
-							onToggle={onToggle}
-							onDelete={handleDelete}
-							onEdit={handleEdit}
-						/>
-					)}
-					onDrop={handleDrop}
-					canDrag={() => editEnabled}
-					classes={{
-						root: styles.root,
-						draggingSource: styles.draggingSource,
-						dropTarget: styles.dropTarget
+				<Box
+					sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						padding: '2rem'
 					}}
-				/>
+				>
+					<Typography>{t('bookmarkDescription')}</Typography>
+					<Typography
+						sx={{
+							color: 'white',
+							fontSize: '1rem'
+						}}
+					>
+						{data?.description}
+					</Typography>
+				</Box>
 			</Box>
-		</DndProvider>
+		</Box>
 	);
 };
 

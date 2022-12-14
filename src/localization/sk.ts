@@ -15,6 +15,7 @@ export default {
 	bookmarkDescription: 'Popis',
 	imageUrl: 'URL obrázku',
 	name: 'Meno',
+	title: 'Meno',
 	public: 'Verejné',
 	private: 'Súkromné',
 	cancel: 'Zatvoriť',
