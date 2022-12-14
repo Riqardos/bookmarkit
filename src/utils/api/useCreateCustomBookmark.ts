@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { setDoc } from 'firebase/firestore';
 import uuid from 'react-uuid';
 
