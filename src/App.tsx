@@ -9,33 +9,38 @@ import Home from './pages/Home';
 import { ColorModeThemeProvider } from './utils/ColorModeThemeProvider';
 import { LanguageProvider } from './hooks/useTranslation';
 import Navbar from './components/Navbar';
+import { UserProvider } from './hooks/useLoggedInUser';
+import Bookmark from './pages/Bookmark';
 
 const App = () => (
 	<ColorModeThemeProvider>
-		<LanguageProvider>
-			<CssBaseline />
-			<BrowserRouter>
-				<Navbar />
-				<Container
-					component="main"
-					sx={{
-						display: 'flex',
-						flexDirection: 'column',
-						justifyContent: 'center',
-						alignItems: 'center',
-						height: '100%',
-						pt: 8,
-						gap: 2
-					}}
-				>
-					<Routes>
-						<Route path={routes.home} element={<Home />} />
-						<Route path={routes.login} element={<Login />} />
-						<Route path={routes.notFound} element={<NotFound />} />
-					</Routes>
-				</Container>
-			</BrowserRouter>
-		</LanguageProvider>
+		<UserProvider>
+			<LanguageProvider>
+				<CssBaseline />
+				<BrowserRouter>
+					<Navbar />
+					<Container
+						component="main"
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							justifyContent: 'center',
+							alignItems: 'center',
+							height: '100%',
+							pt: 8,
+							gap: 2
+						}}
+					>
+						<Routes>
+							<Route path={routes.home} element={<Home />} />
+							<Route path={routes.login} element={<Login />} />
+							<Route path={routes.bookmark} element={<Bookmark />} />
+							<Route path={routes.notFound} element={<NotFound />} />
+						</Routes>
+					</Container>
+				</BrowserRouter>
+			</LanguageProvider>
+		</UserProvider>
 	</ColorModeThemeProvider>
 );
 
