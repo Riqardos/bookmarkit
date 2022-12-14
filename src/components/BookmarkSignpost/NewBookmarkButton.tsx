@@ -13,8 +13,7 @@ import {
 	FormControl,
 	FormControlLabel,
 	FormGroup,
-	FormHelperText,
-	FormLabel
+	FormHelperText
 } from '@mui/material';
 import { useState } from 'react';
 

@@ -8,12 +8,7 @@ import {
 	DialogContentText,
 	TextField,
 	Tooltip,
-	Divider,
-	Switch,
-	FormControl,
-	FormControlLabel,
-	FormGroup,
-	FormHelperText
+	Divider
 } from '@mui/material';
 import { useState } from 'react';
 
