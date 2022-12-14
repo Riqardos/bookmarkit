@@ -17,13 +17,13 @@ const BookmarkTile = ({ title, description, imageUrl, id }: Bookmark) => {
 	const navigation = useNavigate();
 	return (
 		<Card
-			sx={{ minWidth: 275, height: '75%', cursor: 'pointer' }}
+			sx={{ minWidth: 275, height: '100%', cursor: 'pointer' }}
 			onClick={() => navigation(`/bookmarks/${id}`)}
 		>
 			<CardMedia
 				component="img"
-				height="50%"
 				width="100%"
+				height="50%"
 				sx={{
 					objectFit: 'scale-down',
 					background: 'white',

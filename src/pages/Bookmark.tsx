@@ -165,6 +165,7 @@ const Bookmark = () => {
 			sx={{
 				display: 'flex',
 				marginBottom: 'auto',
+				height: '80%',
 				justifyContent: 'space-between'
 			}}
 		>
@@ -231,8 +232,7 @@ const Bookmark = () => {
 				sx={{
 					width: '100%',
 					display: 'flex',
-					flexDirection: 'column',
-					justifyContent: 'space-around'
+					flexDirection: 'column'
 				}}
 			>
 				<Box
@@ -245,24 +245,14 @@ const Bookmark = () => {
 					<Typography>{t('title')}</Typography>
 					<Typography
 						sx={{
-							color: 'white',
 							fontSize: '2rem'
 						}}
 					>
 						{data?.title}
 					</Typography>
-				</Box>
-				<Box
-					sx={{
-						display: 'flex',
-						flexDirection: 'column',
-						padding: '2rem'
-					}}
-				>
 					<Typography>{t('bookmarkDescription')}</Typography>
 					<Typography
 						sx={{
-							color: 'white',
 							fontSize: '1rem'
 						}}
 					>

@@ -22,11 +22,6 @@ const useSubscribeToBookmark = () => {
 			return;
 		}
 
-		if (!validate(bookmarkUUID)) {
-			setSubmitError(t('invalidUUID'));
-			return;
-		}
-
 		const existingBookmark = bookmarks.find(b => b.id === bookmarkUUID);
 		if (!existingBookmark || !existingBookmark.isPublic) {
 			setSubmitError(t('nonExistingUUID'));
