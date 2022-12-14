@@ -3,31 +3,33 @@ import React, { useState } from 'react';
 import { validate } from 'uuid';
 
 import useLoggedInUser from '../../hooks/useLoggedInUser';
+import { useTranslation } from '../../hooks/useTranslation';
 import { usersBookmarksDocument } from '../firebase';
 
 import useGetAllBookmarks from './useGetAllBookmarks';
 import useUserBookmarks from './useUserBookmarks';
 
 const useSubscribeToBookmark = () => {
+	const t = useTranslation();
 	const user = useLoggedInUser();
 	const { data } = useUserBookmarks();
-	const { bookmarks, loading } = useGetAllBookmarks();
+	const { bookmarks } = useGetAllBookmarks();
 	const [submitError, setSubmitError] = useState<string | undefined>();
 
 	const handleSubmit = async ({ bookmarkUUID }: { bookmarkUUID: string }) => {
 		if (!user) {
-			setSubmitError('not_signed_in');
+			setSubmitError(t('notSignedIn'));
 			return;
 		}
 
 		if (!validate(bookmarkUUID)) {
-			setSubmitError('invalid_uuid');
+			setSubmitError(t('invalidUUID'));
 			return;
 		}
 
 		const existingBookmark = bookmarks.find(b => b.id === bookmarkUUID);
 		if (!existingBookmark || !existingBookmark.isPublic) {
-			setSubmitError('invalid_uuid');
+			setSubmitError(t('nonExistingUUID'));
 			return;
 		}
 

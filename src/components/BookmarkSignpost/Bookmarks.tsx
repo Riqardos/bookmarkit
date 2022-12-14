@@ -25,7 +25,7 @@ const Bookmarks = ({
 		return <BookmarksLoading />;
 	}
 
-	if (!bookmarks.length) {
+	if (bookmarks && !bookmarks.length) {
 		return (
 			<Box
 				sx={{

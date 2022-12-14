@@ -8,5 +8,8 @@ export default {
 	bookmarkVisibilitySwitchHelperText: 'Nastav viditeľnosť záložky.',
 	noBookmarkFound: 'Nenašla sa žiadna záložka.',
 	subscribeToBookmarkText:
-		'Zadajte UUID už existujúcej záložky, ktorú chcete sledovať alebo rozširovať.'
+		'Zadajte UUID už existujúcej záložky, ktorú chcete sledovať alebo rozširovať.',
+	notSignedIn: 'Užívateľ nie je prihlásený.',
+	invalidUUID: 'Zadané UUID nie je valídne.',
+	nonExistingUUID: 'Zadané UUID neexistuje.'
 };

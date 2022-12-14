@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from 'react';
-
 import { Bookmark } from '../firebase';
 import useLoggedInUser from '../../hooks/useLoggedInUser';
 
@@ -14,7 +12,6 @@ const useGetAllUserBookmarks = () => {
 	if (!user) return {};
 
 	const result = bookmarks.filter(b => data.includes(b.id));
-	console.log(result);
 	const groupedBookmarks = result.reduce(
 		(acc, bookmark) => {
 			// reduce does not work for true/false

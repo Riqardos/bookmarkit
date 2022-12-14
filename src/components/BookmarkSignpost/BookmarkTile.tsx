@@ -8,14 +8,18 @@ import {
 	CardMedia,
 	Typography
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 import { Bookmark } from '../../utils/firebase';
 import logo from '../../assets/navbarlogo.svg';
 
-const BookmarkTile = ({ title, description, imageUrl }: Bookmark) => {
-	console.log('afaf');
+const BookmarkTile = ({ title, description, imageUrl, id }: Bookmark) => {
+	const navigation = useNavigate();
 	return (
-		<Card sx={{ minWidth: 275, height: '100%' }}>
+		<Card
+			sx={{ minWidth: 275, height: '100%' }}
+			onClick={() => navigation(`/bookmarks/${id}`)}
+		>
 			<CardMedia
 				component="img"
 				height="50%"

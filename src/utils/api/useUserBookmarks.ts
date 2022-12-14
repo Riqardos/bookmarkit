@@ -1,5 +1,5 @@
 import { onSnapshot } from 'firebase/firestore';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import useLoggedInUser from '../../hooks/useLoggedInUser';
 import { usersBookmarksDocument } from '../firebase';

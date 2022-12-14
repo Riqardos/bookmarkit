@@ -8,5 +8,8 @@ export default {
 	bookmarkVisibilitySwitchHelperText: 'Set visibility for this bookmark.',
 	noBookmarkFound: 'No Bookmark Found.',
 	subscribeToBookmarkText:
-		'Enter UUID of already existing bookmark you want to subscribe to.'
+		'Enter UUID of already existing bookmark you want to subscribe to.',
+	notSignedIn: 'User is not signed in.',
+	invalidUUID: 'Invalid UUID.',
+	nonExistingUUID: 'Non existing UUID.'
 };

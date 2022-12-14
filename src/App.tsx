@@ -1,17 +1,12 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Container, CssBaseline } from '@mui/material';
 
-import { routes } from './routes';
-import NotFound from './pages/NotFound';
-import Login from './pages/Login';
 import { ColorModeThemeProvider } from './utils/ColorModeThemeProvider';
 import { LanguageProvider } from './hooks/useTranslation';
 import Navbar from './components/Navbar';
 import { UserProvider } from './hooks/useLoggedInUser';
-import Bookmark from './pages/Bookmark';
-import NewHome from './pages/NewHome';
-import Home from './pages/Home';
+import AppRoutes from './components/AppRoutes';
 
 const App = () => (
 	<ColorModeThemeProvider>
@@ -32,13 +27,7 @@ const App = () => (
 							gap: 2
 						}}
 					>
-						<Routes>
-							<Route path={routes.home} element={<NewHome />} />
-							<Route path={routes.home2} element={<Home />} />
-							<Route path={routes.login} element={<Login />} />
-							<Route path={routes.bookmark} element={<Bookmark />} />
-							<Route path={routes.notFound} element={<NotFound />} />
-						</Routes>
+						<AppRoutes />
 					</Container>
 				</BrowserRouter>
 			</LanguageProvider>
