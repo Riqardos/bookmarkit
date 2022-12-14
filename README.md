@@ -39,7 +39,7 @@
     <a href="https://github.com/Riqardos/bookmarkit/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Riqardos/bookmarkit/">View Demo</a>
+    <a href="https://bookmarkit-46681.web.app/">View Demo</a>
     ·
     <a href="https://github.com/Riqardos/bookmarkit/issues">Report Bug</a>
     ·
@@ -77,7 +77,7 @@
 
 ## About The Project
 
-TODO
+Simple application for managing bookmarks.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -110,14 +110,6 @@ TODO
    ```sh
    yarn start
    ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- USAGE EXAMPLES -->
-
-## Usage
-
-TODO
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
