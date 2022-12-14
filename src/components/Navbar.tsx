@@ -1,4 +1,11 @@
-import { AppBar, Box, Button, Container, Toolbar } from '@mui/material';
+import {
+	AppBar,
+	Box,
+	Button,
+	Container,
+	Toolbar,
+	useTheme
+} from '@mui/material';
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as Logo } from '../assets/navbarlogo.svg';
@@ -10,6 +17,7 @@ import { signOut } from '../utils/firebase';
 const Navbar = () => {
 	const t = useTranslation();
 	const user = useLoggedInUser();
+	const theme = useTheme();
 
 	return (
 		<AppBar
@@ -17,7 +25,7 @@ const Navbar = () => {
 				position: 'sticky',
 				display: 'flex',
 				top: 0,
-				background: 'inherit'
+				background: theme.palette.background.paper
 			}}
 		>
 			<Container sx={{ width: '100%' }}>
