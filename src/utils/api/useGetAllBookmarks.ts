@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { onSnapshot } from 'firebase/firestore';
 
 import { Bookmark, bookmarksCollection } from '../firebase';
-import useLoggedInUser from '../../hooks/useLoggedInUser';
-
-import useUserBookmarks from './useUserBookmarks';
 
 const useGetAllBookmarks = () => {
 	const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
