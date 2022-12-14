@@ -16,7 +16,10 @@ import CopyIdToClipboard from '../CopyIdToClipboard';
 const BookmarkTile = ({ title, description, imageUrl, id }: Bookmark) => {
 	const navigation = useNavigate();
 	return (
-		<Card sx={{ minWidth: 275, height: '75%' }}>
+		<Card
+			sx={{ minWidth: 275, height: '75%', cursor: 'pointer' }}
+			onClick={() => navigation(`/bookmarks/${id}`)}
+		>
 			<CardMedia
 				component="img"
 				height="50%"
@@ -30,7 +33,7 @@ const BookmarkTile = ({ title, description, imageUrl, id }: Bookmark) => {
 				alt="Bookmark logo"
 			/>
 			<CardHeader title={title} />
-			<CardContent onClick={() => navigation(`/bookmarks/${id}`)}>
+			<CardContent>
 				<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
 					{description}
 				</Typography>
